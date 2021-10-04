@@ -1,0 +1,54 @@
+doctype html 
+html
+ head
+  block title 
+  block script 
+  style 
+   include ../static/styles/layout.css
+   block style
+
+body
+ 
+ header
+  #header
+    a(href='/')
+      #icon.header
+        img(src='../static/imgs/icons/sortify.png' alt='Sortify-logo')
+      #heading.header
+        h2 Sortify
+ nav
+  ul
+    li
+      a(href='/') Home
+    li
+      a(href='/artists') Artists
+    li
+      a(href='/playlists') Playlists
+    li
+      a(href='/sign-in') Sign-In
+    li
+      a(href='/sign-up') Sign-Up
+ 
+ 
+ block content 
+
+ footer
+  #footicons
+    a(href='https://www.facebook.com/' target='_blank')
+      img.footicon(src='../static/imgs/icons/Fb.png' alt='Facebook')
+    a(href='https://www.instagram.com/yuvraj_0310/' target='_blank')
+      img.footicon(src='../static/imgs/icons/Instagram.png' alt='Instagram')
+    a(href='https://twitter.com/?lang=en' target='_blank')
+      img.footicon(src='../static/imgs/icons/Twitter.png' alt='Twitter')
+  div
+    ul#footlinks
+      li
+        a(href='/about') About
+      li
+        a(href='/contactus') Contact Us
+      li
+        a(href='/community') Community
+      li
+        a(href='/feedback') Feedback
+  #copyright
+    | © 2021 Sortify | All rights reserved.

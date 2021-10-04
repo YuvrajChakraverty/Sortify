@@ -1,0 +1,23 @@
+extends layout.pug 
+
+block title 
+    title Home 
+
+block script 
+
+block style 
+    include ../static/styles/home.css
+
+block content 
+    #banner
+     div Stream songs for free!
+    #tiles
+     .tile
+      img.tileimg(src='../static/imgs/icons/ads.png' alt='No-Ads')
+      div Ad-free music
+     #middletile.tile
+      img.tileimg(src='../static/imgs/icons/play.png' alt='Unlimited playbacks')
+      div Unlimited playbacks
+     .tile
+      img.tileimg(src='../static/imgs/icons/star.png' alt='Handpicked')
+      div Hand-picked songs

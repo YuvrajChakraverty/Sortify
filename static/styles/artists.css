@@ -1,0 +1,44 @@
+/* section */
+
+section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 640px;
+    background: rgba(220, 120, 220, 0.8);
+}
+
+#artists{
+    padding: 20px;
+    height: 540px;
+    width: 750px;
+    display: grid;
+    /* grid-template-columns: repeat(4,auto); */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3,auto);
+    grid-gap: 20px;
+    background: rgba(81, 194, 115, 1);
+    border-radius: 30px;
+}
+
+.artist{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: rgb(98, 159, 209);
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    /* font-weight: bold; */
+    font-family: 'Nunito', sans-serif;
+}
+
+.artist:hover{
+    background: rgb(110, 170, 220);
+}
+
+.pic{
+    height: 130px;
+}

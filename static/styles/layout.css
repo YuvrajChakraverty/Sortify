@@ -1,0 +1,135 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+/* header */
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@600&family=Mitr&family=Roboto:wght@700&display=swap');
+
+header{
+    height: 80px;
+    font-family: 'Mitr', sans-serif;
+    color: white;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#header a{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    margin: 0px 3px;
+}
+
+#icon img{
+    filter: invert(1);
+    height: 38px;
+    animation: logo-rotate 5s ease-out 1s infinite forwards;
+}
+
+@keyframes logo-rotate{
+    0%{
+
+    }
+
+    20%{
+        transform: rotate(360deg);
+
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+/* navbar */
+
+nav{
+    height: 40px;
+    background: rgb(44, 44, 44);
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+
+nav ul{
+height: 40px;
+list-style: none;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+
+nav ul li a{
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    margin: 0px 45px;
+    font-family: 'Mitr', sans-serif;
+
+}
+
+nav ul li a:hover{
+    color: rgb(220, 120, 220);
+}
+
+/* footer */
+
+footer{
+    height: 320px;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0px 150px 0px 150px;
+}
+
+#footicons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+#footicons img{
+    filter: invert(1);
+    height: 40px;
+}
+
+#footicons a{
+    margin: 0px 50px;
+
+}
+
+#footlinks{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+}
+
+
+#footlinks li a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Mitr', sans-serif;
+    font-size: 18px;
+}
+
+#copyright{
+    height: 30px;
+    color: white;
+    font-family: 'Mitr', sans-serif;
+    text-align: center;
+}

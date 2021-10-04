@@ -1,0 +1,50 @@
+/* banner */
+
+#banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: rgb(220, 120, 220); */
+    background: rgb(81, 194, 115);
+    height: 320px;
+    font-size: 70px;
+    font-family: 'Mitr', sans-serif;
+    text-shadow: rgb(220, 120, 220) 2px 2px;
+}
+
+/* tiles */
+
+#tiles{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background: rgb(81, 194, 115); */
+    background: rgb(220, 120, 220);
+    height: 320px;
+    padding: 0px 10px;
+}
+
+.tile{
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: black 5px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 130px;
+    width: 230px;
+    border-radius: 15px;
+    padding: 10px;
+    font-family: 'Mitr', sans-serif;
+    font-size: 22px;
+}
+
+#middletile{
+    margin: 0px 20px;
+}
+
+.tileimg{
+    height:50px;
+    filter: invert(1);
+}

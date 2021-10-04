@@ -1,0 +1,28 @@
+extends layout.pug 
+
+block title 
+    title Sign-Up
+
+block script
+    script(src="../static/scripts/sign-up.js") 
+
+block style 
+    include ../static/styles/sign-up.css
+
+block content 
+ section 
+  form(action='/sign-up' method='POST')
+    h1 
+     | Sign-Up
+    input.input(type='email' placeholder='E-mail' name='email' required maxlength='40')
+    div
+     input#password.input(type='password' placeholder='Create Password' name='password' required oninput="pass_valid(this)" maxlength='20')
+     img#sh(src='../static/imgs/icons/hide_eye.png' onclick="change(this)")
+     div#pw_msg
+      |(length between 8-20 characters, white spaces not allowed, must have at least 1 : <br>
+      |uppercase; lowercase; digit(0-9); special character[ !, @, #, $, %, &, ? ])
+    div 
+     input#checkbox(type="checkbox" checked=false onclick="btnchange(this)")
+     |  I agree to 
+     a(href="/T&C") T&C
+    input#submit.btn(type='submit' value='Sign-Up'  disabled=true)

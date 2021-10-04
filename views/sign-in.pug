@@ -1,0 +1,21 @@
+extends layout.pug 
+
+block title 
+    title Sign-In
+
+block script 
+    script(src="../static/scripts/sign-in.js") 
+
+block style 
+    include ../static/styles/sign-in.css
+
+block content
+ section
+  form(action='/sign-in' method='POST')
+    h1 
+     | Sign-In
+    input.input(type='email' placeholder='E-mail' name='email' required)
+    div
+     input#password.input(type='password' placeholder='Password' name='password' required)
+     img#sh(src='../static/imgs/icons/hide_eye.png' onclick="change()")
+    input.btn(type='submit' value='Sign-In')

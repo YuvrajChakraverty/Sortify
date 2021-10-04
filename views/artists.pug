@@ -1,0 +1,40 @@
+extends layout.pug 
+
+block title 
+    title Artists
+
+block script 
+ 
+block style 
+    include ../static/styles/artists.css
+
+block content 
+ section
+  #artists
+    a.artist(href='/unavailable')
+      img.pic(src='../static/imgs/artists/billie.png' alt='')
+      |                 Billie Eilish
+    a.artist(href='/unavailable')
+      img.pic(src='../static/imgs/artists/dua.png' alt='')
+      |                 Dua Lipa
+    a.artist(href='/unavailable')
+      img.pic(src='../static/imgs/artists/ed.png' alt='')
+      |                 Ed Sheeran
+    a.artist(href='/unavailable')
+      img.pic(src='../static/imgs/artists/halsey.png' alt='')
+      |                 Halsey
+    a.artist(href='/unavailable')
+      img.pic(src='../static/imgs/artists/selena.png' alt='')
+      |                 Selena Gomez
+    a.artist(href='/unavailable')
+      img.pic(src='../static/imgs/artists/shawn.png' alt='')
+      |                 Shawn Mendes
+    a.artist(href='/unavailable')
+      img.pic(src='../static/imgs/artists/sia.png' alt='')
+      |                 Sia
+    a.artist(href='/unavailable')
+      img.pic(src='../static/imgs/artists/weeknd.png' alt='')
+      |                 The Weeknd
+    a.artist(href='/unavailable')
+      img.pic(src='../static/imgs/artists/zayn.png' alt='')
+      |                 Zayn Malik

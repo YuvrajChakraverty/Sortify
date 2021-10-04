@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 
 app.get("/artists", (req, res) => {
     res.status(200).render("artists");
-})
+}) 
 
 app.get("/playlists", (req, res) => {
     res.status(200).render("playlists");
