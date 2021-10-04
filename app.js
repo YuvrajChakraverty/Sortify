@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 80;
+var cors = require('cors')
 const path = require("path");
 const fs = require("fs");
 const bodyparser = require("body-parser");
@@ -15,6 +16,7 @@ db.once('open', function () {
 
 app.use('/static', express.static('static'));
 app.use(express.urlencoded());
+app.use(cors())
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -24,6 +26,10 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
+
+app.get('/products/:id', function (req, res, next) {
+    res.json({msg: 'This is CORS-enabled for all origins!'})
+  })
 
 app.get("/", (req, res) => {
     res.status(200).render("home");
