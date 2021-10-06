@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 const bodyparser = require("body-parser");
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/sortify', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://YuvrajChakraverty:security%40101@sortify.gjlg6.mongodb.net/Sortify?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
