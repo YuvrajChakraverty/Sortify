@@ -4,10 +4,10 @@ function change(eye) {
   let password= document.getElementById('password');
   if(password.type=="password")
   {password.type="text";
-  eye.src="../static/icons/show_eye.png";}
+  eye.src="../static/imgs/icons/show_eye.png";}
   else
   {password.type="password";
-  eye.src="../static/icons/hide_eye.png";}
+  eye.src="../static/imgs/icons/hide_eye.png";}
   
 }
 

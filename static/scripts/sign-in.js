@@ -3,9 +3,9 @@ function change() {
     let password= document.getElementById('password');
     if(password.getAttribute("type")=="password")
      {password.setAttribute("type","text");
-      sh.setAttribute("src","../static/icons/show_eye.png");}
+      sh.setAttribute("src","../static/imgs/icons/show_eye.png");}
     else
      {password.setAttribute("type","password");
-     sh.setAttribute("src","../static/icons/hide_eye.png")}
+     sh.setAttribute("src","../static/imgs/icons/hide_eye.png")}
      
 }
