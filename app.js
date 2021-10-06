@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 80;
+const PORT = process.env.PORT || 5000
 var cors = require('cors')
 const path = require("path");
 const fs = require("fs");
@@ -92,6 +92,6 @@ app.get("/feedback", (req, res) => {
     res.status(200).render("z_feedback");
 })
 
-app.listen(port, () => {
-    console.log(`--- 'Sortify' is live on port: ${port} ---`);
+app.listen(PORT, () => {
+    console.log(`--- 'Sortify' is live on port: ${PORT} ---`);
 });
