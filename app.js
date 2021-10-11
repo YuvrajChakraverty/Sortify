@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 5000
+// const PORT = process.env.PORT || 5000
+const PORT = 80
 var cors = require('cors')
 const path = require("path");
 const fs = require("fs");
 const bodyparser = require("body-parser");
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://YuvrajChakraverty:security%40101@sortify.gjlg6.mongodb.net/Sortify?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
-var db = mongoose.connection;
+var db = mongoose.createConnection('mongodb+srv://YuvrajChakraverty:security%40101@sortify.gjlg6.mongodb.net/Sortify?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     console.log("--- connection est. w/ sortify db ---");
@@ -25,7 +25,21 @@ const userSchema = new mongoose.Schema({
     password: String
 });
 
+const trackSchema = new mongoose.Schema({
+    name: String,
+    artist: String,
+    url: String
+});
+
+const artistSchema = new mongoose.Schema({
+    name: String,
+    tracks: Number,
+    url: String
+});
+
 const User = mongoose.model('User', userSchema);
+const track = mongoose.model('track', trackSchema);
+const artist = mongoose.model('artist', artistSchema);
 
 app.get('/products/:id', function (req, res, next) {
     res.json({msg: 'This is CORS-enabled for all origins!'})
@@ -90,6 +104,24 @@ app.get("/community", (req, res) => {
 
 app.get("/feedback", (req, res) => {
     res.status(200).render("z_feedback");
+})
+
+app.get("/artist", (req, res) => {
+    var art_name= req.query.name;
+    // console.log(art_name);
+    // const artist={'name':'Billie Eilish', 'tracks':'14 tracks'}
+    // console.log(art_name);
+    artist.findOne({ name: art_name }, (err, art)=> {
+        if(err){
+            console.log("Artist not found!");
+        }
+        else{
+            console.log(art);
+            res.status(200).render("artist");
+        }
+    });
+    // res.status(200).render("artist", artist);
+
 })
 
 app.listen(PORT, () => {

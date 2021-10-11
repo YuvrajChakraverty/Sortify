@@ -1,0 +1,77 @@
+section{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* height: 640px; */
+    min-height: 640px;
+    height: auto;
+    background: rgba(220, 120, 220, 0.8);
+}
+
+#container{
+    width: 700px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    padding: 15px 40px;
+    margin: 50px;
+}
+
+#artistinfo{
+    display: grid;
+    grid-template-columns: 2fr 7fr 1fr;
+    align-items: center;
+    /* border-bottom: 1px solid black; */
+}
+
+#artistimg{
+    height: 120px;
+}
+
+#artistname{
+    margin-left: 10px;
+    font-size: 40px;
+}
+
+hr{
+    margin: 15px 0px 20px 0px;
+}
+
+audio{
+    outline: none;
+    width: 51%;
+    filter: invert(0.1);
+    margin-top: 10px;
+}
+
+#player{
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: rgba(255, 255, 255, 0.4); */
+    background: rgba(0, 0, 0, 0.8);
+    width: 100vw;
+    height: 110px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(81, 194, 115);
+    z-index: 1;
+}
+
+.track{
+    font-size: 20px;
+    margin: 10px 0px 20px 30px;
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pp{
+    height: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+}

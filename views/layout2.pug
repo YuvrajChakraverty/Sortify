@@ -1,0 +1,33 @@
+doctype html 
+html
+ head
+  block title 
+  block script 
+  style 
+   include ../static/styles/layout.css
+   block style
+
+body
+ 
+ header
+  #header
+    a(href='/')
+      #icon.header
+        img(src='../static/imgs/icons/Sortify.png' alt='Sortify-logo')
+      #heading.header
+        h2 Sortify
+ nav
+  ul
+    li
+      a(href='/') Home
+    li
+      a(href='/artists') Artists
+    li
+      a(href='/playlists') Playlists
+    li
+      a(href='/sign-in') Sign-In
+    li
+      a(href='/sign-up') Sign-Up
+ 
+ 
+ block content 

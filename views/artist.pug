@@ -1,0 +1,54 @@
+extends layout2.pug 
+
+block title 
+    title Tracks
+
+block script 
+    script(src="../static/scripts/artist.js")
+ 
+block style 
+    include ../static/styles/artist.css
+
+block content 
+ section
+  #container 
+   #artistinfo
+    img#artistimg(src="../static/imgs/artists/billie.png", alt="")
+    #artistname
+     | #{name}
+    #numtracks 
+     | #{tracks}
+   hr
+   ul#tracks
+    li.track 
+     img.pp(src="../static/imgs/icons/playsong.png", alt="", onclick="ppchange(this)")
+     | No Time to Die
+    li.track 
+     img.pp(src="../static/imgs/icons/playsong.png", alt="", onclick="ppchange(this)")
+     | No Time to Die
+    li.track 
+     img.pp(src="../static/imgs/icons/playsong.png", alt="", onclick="ppchange(this)")
+     | No Time to Die
+    li.track 
+     img.pp(src="../static/imgs/icons/playsong.png", alt="", onclick="ppchange(this)")
+     | No Time to Die
+    li.track 
+     img.pp(src="../static/imgs/icons/playsong.png", alt="", onclick="ppchange(this)")
+     | No Time to Die
+    li.track 
+     img.pp(src="../static/imgs/icons/playsong.png", alt="", onclick="ppchange(this)")
+     | No Time to Die
+    li.track 
+     img.pp(src="../static/imgs/icons/playsong.png", alt="", onclick="ppchange(this)")
+     | No Time to Die
+    li.track 
+     img.pp(src="../static/imgs/icons/playsong.png", alt="", onclick="ppchange(this)")
+     | No Time to Die
+    li.track 
+     img.pp(src="../static/imgs/icons/playsong.png", alt="", onclick="ppchange(this)")
+     | No Time to Die
+
+  #player
+   | No Time to Die - Billie Eilish
+   audio#audio(controls='', autoplay=False, controlsList="nodownload")
+    source#audiourl(src="https://firebasestorage.googleapis.com/v0/b/sortify-1.appspot.com/o/songs%2Fbe%2FNo%20Time%20To%20Die.mp3?alt=media&token=11469ac3-1dd2-46b5-a3a1-291de4bc45c4" type="audio/mpeg") 
