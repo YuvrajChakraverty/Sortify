@@ -1,20 +1,18 @@
-function ppchange(ppicon) {
-    const play_song="../static/imgs/icons/playsong.png";
-    const pause_song="../static/imgs/icons/pause.png";
-    var run=true;
-    var source= ppicon.src;
+const artist_name1= document.getElementById("artistname").innerHTML;
+const artist_name2= artist_name1.replace(" ","%20");
+const url= 'music/' + artist_name2;
+console.log(url);
 
-    if(source.localeCompare(pause_song)!=0)
-     {
-      ppicon.src = pause_song;
-      run=false;
-    } 
-    // else{
-    //     alert("bc");
-    //   ppicon.src = play_song;
-    // }
-    if((source.localeCompare(play_song)!=0)&&(run))
-    {
-     ppicon.src = play_song;
-   } 
-}
+fetch(url)
+.then(response => response.json())
+.then(res => {
+    res.data.forEach(element => {
+
+        const song= document.createElement('li');
+        const songname= document.createTextNode(element.name);
+        song.appendChild(songname);
+        document.ul.appendChild(song);
+        console.log(element);
+    });
+})
+.catch(error => console.error(error))

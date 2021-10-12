@@ -7,7 +7,8 @@ const path = require("path");
 const fs = require("fs");
 const bodyparser = require("body-parser");
 const mongoose = require('mongoose');
-var db = mongoose.createConnection('mongodb+srv://YuvrajChakraverty:security%40101@sortify.gjlg6.mongodb.net/Sortify?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://YuvrajChakraverty:security%40101@sortify.gjlg6.mongodb.net/Sortify?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     console.log("--- connection est. w/ sortify db ---");
@@ -106,22 +107,35 @@ app.get("/feedback", (req, res) => {
     res.status(200).render("z_feedback");
 })
 
-app.get("/artist", (req, res) => {
-    var art_name= req.query.name;
-    // console.log(art_name);
-    // const artist={'name':'Billie Eilish', 'tracks':'14 tracks'}
-    // console.log(art_name);
-    artist.findOne({ name: art_name }, (err, art)=> {
+var art_name
+
+app.get("/artist", async(req, res) => {
+    var _id = req.query.id;
+    
+    await artist.findById(_id, (err, art)=> {
         if(err){
-            console.log("Artist not found!");
+            res.status(404).send("Artist not found!")
         }
         else{
-            console.log(art);
-            res.status(200).render("artist");
+            art_name=art.name;
+            res.status(200).render("artist", art);
         }
-    });
-    // res.status(200).render("artist", artist);
+    })
+})
 
+
+// app.get("/tracks", async(req,res)=>{
+//     const data =await track.find({artist:art_name});
+//     res.send(data);
+// })
+
+//   await  axios.get("http:localhost:80/music/Billie%20Eilish")
+    // res.status(200).render("artist", artist);
+app.get("/music/:art_name",async(req,res)=>{
+    const {art_name} = req.params;
+    const data =await track.find({artist:art_name}); 
+    // console.log({data,art_name})
+    res.send(data)
 })
 
 app.listen(PORT, () => {
