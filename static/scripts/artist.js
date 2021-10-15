@@ -11,6 +11,8 @@ window.onload= function() {
         const artist_name2= artist_name1.replace(" ","%20");
         const url1= 'http://localhost/artistdp/' + artist_name2;
         const url2= 'http://localhost/tracksdata/' + artist_name2;
+        // const url1= 'https://sortify-1.herokuapp.com/artistdp/' + artist_name2;
+        // const url2= 'https://sortify-1.herokuapp.com/tracksdata/' + artist_name2;
 
         fetch(url1)
             .then(response => response.json())
@@ -45,7 +47,6 @@ function playthis(track) {
     const audiourl= document.getElementById("audiourl");
     const current_song= document.getElementById("current_song");
     const prev= document.getElementById(prev_track);
-    // prev.style.color= "black";
     prev.classList.remove("track_playing");
     prev.classList.add("track");
     prev.style.fontWeight= "normal";
@@ -59,7 +60,6 @@ function playthis(track) {
     }
     audio.load();
     audio.play();
-    // track.style.color= "rgb(81, 194, 115)";
     track.classList.remove("track");
     track.classList.add("track_playing");
     track.style.fontWeight= "bold";

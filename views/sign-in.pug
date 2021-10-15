@@ -12,6 +12,8 @@ block style
 block content
  section
   form(action='/sign-in' method='POST')
+    #alert 
+     |#{msg}
     h1 
      | Sign-In
     input.input(type='email' placeholder='E-mail' name='email' required)

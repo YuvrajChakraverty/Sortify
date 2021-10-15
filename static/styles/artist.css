@@ -4,7 +4,6 @@ section{
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* height: 640px; */
     min-height: 640px;
     height: auto;
     background: rgba(220, 120, 220, 0.8);
@@ -22,7 +21,6 @@ section{
     display: grid;
     grid-template-columns: 2fr 7fr 1fr;
     align-items: center;
-    /* border-bottom: 1px solid black; */
 }
 
 #artistimg{

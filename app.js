@@ -4,6 +4,7 @@ const app = express();
 const PORT = 80
 var cors = require('cors')
 const path = require("path");
+const bcrypt = require('bcrypt');
 const bodyparser = require("body-parser");
 const mongoose = require('mongoose');
 const { match } = require("assert");
@@ -43,6 +44,17 @@ const artistSchema = new mongoose.Schema({
     url: String
 });
 
+userSchema.pre('save', async function(next) {
+    try{
+        const salt =  await bcrypt.genSalt(10);
+        const hashedPass = await bcrypt.hash(this.password, salt);
+        this.password= hashedPass;
+        next();
+    } catch(error) {
+        next(error);
+    }
+})
+
 const User = mongoose.model('User', userSchema);
 const track = mongoose.model('track', trackSchema);
 const artist = mongoose.model('artist', artistSchema);
@@ -67,8 +79,27 @@ app.get("/sign-in", (req, res) => {
     res.status(200).render("sign-in");
 })
 
-app.post("/sign-in", (req, res) => {
-    res.status(200).render("unavailable");
+app.post("/sign-in", async(req, res) => {
+    var enteredData= req.body;
+    const rec= await User.findOne({ email: enteredData.email})
+    if(rec==null) {
+        res.status(200).render("sign-in", {msg: 1});
+    }
+
+    else{
+        bcrypt.compare(enteredData.password, rec.password, function(err, isMatch){
+            if(err) {
+                throw err
+            }
+            else if(!isMatch){
+                res.status(200).render("sign-in", {msg: 2});
+            }
+            else{
+                res.status(200).render("signinsuccess", {name: rec.name});
+            }
+
+        })
+    }
 })
 
 app.get("/sign-up", (req, res) => {
@@ -80,7 +111,7 @@ app.post("/sign-up", async(req, res) => {
     const rec= await User.find({ email: userData.email })
     if(!rec.length){
         userData.save().then(()=>{
-            res.status(200).render("u_acc_created");
+            res.status(200).render("signupsuccess");
         }).catch(()=>{
             res.status(400).send("Error saving!");
         })
@@ -123,15 +154,15 @@ var art_name
 app.get("/artist", async(req, res) => {
     var _id = req.query.id;
     
-    await artist.findById(_id, (err, art)=> {
-        if(err){
-            res.status(404).send("Artist not found!");
-        }
-        else{
-            art_name=art.name;
-            res.status(200).render("artist", art);
-        }
-    })
+    const art= await artist.findById(_id)
+    if(art==null){
+        res.status(404).send("Artist not found!");
+    }
+    else{
+        art_name=art.name;
+        res.status(200).render("artist", art);
+    }
+    
 })
 
 app.get("/tracksdata/:art_name",async(req,res)=>{

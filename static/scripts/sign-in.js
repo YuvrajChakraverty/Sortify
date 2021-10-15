@@ -1,3 +1,14 @@
+window.onload= function() {
+  const msg= document.getElementById("alert").innerHTML;
+  if(msg==1){
+    console.log("hello")
+    alert("Account doesn't exist!");
+  }
+  if(msg==2){
+    alert("Incorrect password!");
+  }
+}
+
 function change() {
     let sh= document.getElementById('sh');
     let password= document.getElementById('password');

@@ -57,7 +57,10 @@ form h1{
 
 .btn:hover{
     background: darkcyan;
-    /* background: rgb(81, 194, 115); */
     background: rgb(110, 170, 220) ;
-    /* color: white; */
+}
+
+#alert{
+    display: none;
+    visibility: hidden;
 }
