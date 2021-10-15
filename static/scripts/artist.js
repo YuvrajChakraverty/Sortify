@@ -9,10 +9,10 @@ window.onload= function() {
 
         const artist_name1= document.getElementById("artistname").innerHTML;
         const artist_name2= artist_name1.replace(" ","%20");
-        const url1= 'http://localhost/artistdp/' + artist_name2;
-        const url2= 'http://localhost/tracksdata/' + artist_name2;
-        // const url1= 'https://sortify-1.herokuapp.com/artistdp/' + artist_name2;
-        // const url2= 'https://sortify-1.herokuapp.com/tracksdata/' + artist_name2;
+        // const url1= 'http://localhost/artistdp/' + artist_name2;
+        // const url2= 'http://localhost/tracksdata/' + artist_name2;
+        const url1= 'https://sortify-1.herokuapp.com/artistdp/' + artist_name2;
+        const url2= 'https://sortify-1.herokuapp.com/tracksdata/' + artist_name2;
 
         fetch(url1)
             .then(response => response.json())
