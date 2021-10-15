@@ -1,4 +1,13 @@
 let passok=false;
+let emailok=false;
+
+window.onload= function() {
+  const msg= document.getElementById("alert").innerHTML;
+  if(msg==1){
+    console.log("hello")
+    alert("An account with this email already exists");
+  }
+}
 
 function change(eye) {
   let password= document.getElementById('password');
@@ -29,9 +38,28 @@ function pass_valid(pass) {
   btnchange(checkbx);
 }
 
+function email_valid(email) {
+  let msg= document.getElementById('em_msg');
+
+  var re= /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if(re.test(email.value)) {
+    msg.style.visibility= "hidden";
+    emailok= true;
+  }
+
+  else{
+    msg.style.visibility= "visible";
+    emailok= false;
+  }
+
+  var checkbx= document.getElementById("checkbox");
+  btnchange(checkbx);
+  
+}
+
 function btnchange(checkbx) {
   let submit= document.getElementById('submit');
-  if((checkbx.checked)&&(passok))
+  if((checkbx.checked)&&(passok)&&(emailok))
   {
     submit.disabled=false;
   }

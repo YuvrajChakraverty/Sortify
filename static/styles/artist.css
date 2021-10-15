@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+
 section{
     display: flex;
     align-items: center;
@@ -30,6 +32,7 @@ section{
 #artistname{
     margin-left: 10px;
     font-size: 40px;
+    font-family: 'Manrope', sans-serif;
 }
 
 hr{
@@ -39,7 +42,6 @@ hr{
 audio{
     outline: none;
     width: 51%;
-    filter: invert(0.1);
     margin-top: 10px;
 }
 
@@ -50,8 +52,7 @@ audio{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background: rgba(255, 255, 255, 0.4); */
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
     width: 100vw;
     height: 110px;
     font-size: 20px;
@@ -68,10 +69,29 @@ audio{
     display: flex;
     flex-direction: row;
     align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+    font-family: 'Manrope', sans-serif;
 }
 
-.pp{
-    height: 20px;
-    margin-right: 15px;
+.track_playing{
+    color: rgb(81, 194, 115);
+    font-size: 20px;
+    margin: 10px 0px 20px 30px;
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     cursor: pointer;
+    font-weight: normal;
+    font-family: 'Manrope', sans-serif;
+}
+
+.track:hover{
+    color: rgb(100, 100, 100);
+}
+
+#current_song{
+    font-family: 'Manrope', sans-serif;
 }

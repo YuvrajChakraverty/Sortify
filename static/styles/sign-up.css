@@ -45,11 +45,15 @@ form h1{
     margin-left: -40px;
 }
 
-#pw_msg{
+.msg{
     color: red;
     font-size: 11px;
     text-align: center;
-    margin-top: 8px;
+    margin-top: 5px;
+}
+
+#nm_msg{
+    color: black;
 }
 
 .btn{
@@ -63,4 +67,9 @@ form h1{
 .btn:enabled:hover {
     background: rgb(110, 170, 220) ;
     cursor: pointer;
+}
+
+#alert{
+    display: none;
+    visibility: hidden;
 }

@@ -12,13 +12,22 @@ block style
 block content 
  section 
   form(action='/sign-up' method='POST')
+    #alert 
+     |#{msg}
     h1 
      | Sign-Up
-    input.input(type='email' placeholder='E-mail' name='email' required maxlength='40')
+    div 
+     input#email.input(type='email' placeholder='E-mail' name='email' required maxlength='40' oninput="email_valid(this)")
+     div#em_msg.msg
+      |( invalid email )
+    #name
+     input.input(type="text" placeholder='Name' name='name' required maxlength='15')
+     #nm_msg.msg
+      |( this is not your username )
     div
      input#password.input(type='password' placeholder='Create Password' name='password' required oninput="pass_valid(this)" maxlength='20')
      img#sh(src='../static/imgs/icons/hide_eye.png' onclick="change(this)")
-     div#pw_msg
+     div#pw_msg.msg
       |(length between 8-20 characters, white spaces not allowed, must have at least 1 : <br>
       |uppercase; lowercase; digit(0-9); special character[ !, @, #, $, %, &, ? ])
     div 

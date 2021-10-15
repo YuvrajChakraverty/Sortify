@@ -4,9 +4,9 @@ const app = express();
 const PORT = 80
 var cors = require('cors')
 const path = require("path");
-const fs = require("fs");
 const bodyparser = require("body-parser");
 const mongoose = require('mongoose');
+const { match } = require("assert");
 mongoose.connect('mongodb+srv://YuvrajChakraverty:security%40101@sortify.gjlg6.mongodb.net/Sortify?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -23,7 +23,12 @@ app.set('views', path.join(__dirname, 'views'));
 
 const userSchema = new mongoose.Schema({
     email: String,
-    password: String
+    name: String,
+    password: String,
+    fav: Array,
+    pl1: Array,
+    pl2: Array,
+    pl3: Array
 });
 
 const trackSchema = new mongoose.Schema({
@@ -70,13 +75,19 @@ app.get("/sign-up", (req, res) => {
     res.status(200).render("sign-up");
 })
 
-app.post("/sign-up", (req, res) => {
+app.post("/sign-up", async(req, res) => {
     var userData = new User(req.body);
-    userData.save().then(()=>{
-    res.status(200).render("u_acc_created");
-    }).catch(()=>{
-    res.status(400).send("Error saving!");
-    })
+    const rec= await User.find({ email: userData.email })
+    if(!rec.length){
+        userData.save().then(()=>{
+            res.status(200).render("u_acc_created");
+        }).catch(()=>{
+            res.status(400).send("Error saving!");
+        })
+    }
+    else{
+        res.status(200).render("sign-up", {msg: 1});
+    }
 })
 
 app.get("/unavailable", (req, res) => {
@@ -99,8 +110,8 @@ app.get("/contactus", (req, res) => {
     res.status(200).render("z_contactus");
 })
 
-app.get("/community", (req, res) => {
-    res.status(200).render("z_community");
+app.get("/technologies", (req, res) => {
+    res.status(200).render("z_technologies");
 })
 
 app.get("/feedback", (req, res) => {
@@ -114,7 +125,7 @@ app.get("/artist", async(req, res) => {
     
     await artist.findById(_id, (err, art)=> {
         if(err){
-            res.status(404).send("Artist not found!")
+            res.status(404).send("Artist not found!");
         }
         else{
             art_name=art.name;
@@ -123,19 +134,16 @@ app.get("/artist", async(req, res) => {
     })
 })
 
-
-// app.get("/tracks", async(req,res)=>{
-//     const data =await track.find({artist:art_name});
-//     res.send(data);
-// })
-
-//   await  axios.get("http:localhost:80/music/Billie%20Eilish")
-    // res.status(200).render("artist", artist);
-app.get("/music/:art_name",async(req,res)=>{
+app.get("/tracksdata/:art_name",async(req,res)=>{
     const {art_name} = req.params;
     const data =await track.find({artist:art_name}); 
-    // console.log({data,art_name})
-    res.send(data)
+    res.send(data);
+})
+
+app.get("/artistdp/:art_name",async(req,res)=>{
+    const {art_name} = req.params;
+    const data =await artist.findOne({name:art_name}); 
+    res.send(data);
 })
 
 app.listen(PORT, () => {
