@@ -24,5 +24,9 @@ block content
   #player
    p#current_song
     | ‎ 
-   audio#audio(controls='', autoplay=False, controlsList="nodownload", onended="next()")
-    source#audiourl(src="" type="audio/mpeg") 
+   #controls 
+    img#prev.ctrl(src="../static/imgs/icons/next.png", alt="next", onclick="prev()")
+    audio#audio(controls='', autoplay=False, controlsList="nodownload", onended="next()")
+     source#audiourl(src="" type="audio/mpeg") 
+    img#next.ctrl(src="../static/imgs/icons/next.png", alt="next", onclick="next()")
+    

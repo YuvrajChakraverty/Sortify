@@ -1,5 +1,6 @@
 let tracksarray= [];
 let prev_track= 0;
+let hide=1;
 
 window.onload= function() {
     var ul= document.getElementById("tracks");
@@ -9,10 +10,10 @@ window.onload= function() {
 
         const artist_name1= document.getElementById("artistname").innerHTML;
         const artist_name2= artist_name1.replace(" ","%20");
-        const url1= 'http://localhost/artistdp/' + artist_name2;
-        const url2= 'http://localhost/tracksdata/' + artist_name2;
-        // const url1= 'https://sortify-1.herokuapp.com/artistdp/' + artist_name2;
-        // const url2= 'https://sortify-1.herokuapp.com/tracksdata/' + artist_name2;
+        // const url1= 'http://localhost/artistdp/' + artist_name2;
+        // const url2= 'http://localhost/tracksdata/' + artist_name2;
+        const url1= 'https://sortify-1.herokuapp.com/artistdp/' + artist_name2;
+        const url2= 'https://sortify-1.herokuapp.com/tracksdata/' + artist_name2;
 
         fetch(url1)
             .then(response => response.json())
@@ -43,6 +44,11 @@ window.onload= function() {
 }
 
 function playthis(track) {
+    if(hide){
+        const player= document.getElementById("player");
+        player.style.visibility='visible';
+        hide=0;
+    }
     const audio= document.getElementById("audio");
     const audiourl= document.getElementById("audiourl");
     const current_song= document.getElementById("current_song");
@@ -74,5 +80,15 @@ function next() {
         next_song_id=0;
     }
     var current= document.getElementById(next_song_id);
+    playthis(current);
+}
+
+function prev() {
+    var prev_song_id= prev_track-1;
+    if(prev_track==0)
+    {
+        prev_song_id=0;
+    }
+    var current= document.getElementById(prev_song_id);
     playthis(current);
 }

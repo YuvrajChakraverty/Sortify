@@ -38,9 +38,10 @@ hr{
 }
 
 audio{
+    /* filter: invert(1); */
     outline: none;
-    width: 51%;
-    margin-top: 10px;
+    width: 45vw;
+    margin: 10px 10px 0px 10px;
 }
 
 #player{
@@ -57,13 +58,36 @@ audio{
     font-weight: bold;
     color: rgb(81, 194, 115);
     z-index: 1;
+    visibility: hidden;
+}
+
+#controls{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#prev{
+    transform: rotate(180deg);
+}
+
+.ctrl{
+    height: 40px;
+    filter: invert(1);
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.ctrl:hover{
+    filter: invert(0.7);
 }
 
 .track{
     font-size: 20px;
-    margin: 10px 0px 20px 30px;
+    margin-left: 30px;
     border-bottom: 1px solid black;
-    padding-bottom: 20px;
+    padding: 20px 0px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -75,9 +99,9 @@ audio{
 .track_playing{
     color: rgb(81, 194, 115);
     font-size: 20px;
-    margin: 10px 0px 20px 30px;
+    margin-left: 30px;
     border-bottom: 1px solid black;
-    padding-bottom: 20px;
+    padding: 20px 0px;
     display: flex;
     flex-direction: row;
     align-items: center;
