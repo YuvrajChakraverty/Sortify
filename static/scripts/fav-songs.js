@@ -11,8 +11,8 @@ sort=parseInt(localStorage.getItem('sort'));
 var shuffleArray=[];
 
 
-// const url= 'https://sortify-1.herokuapp.com/userTracks?list=fav&id='+localStorage.getItem('id');
-const url= 'http://localhost/userTracks?list=fav&id='+localStorage.getItem('id');
+const url= 'https://sortify-1.herokuapp.com/userTracks?list=fav&id='+localStorage.getItem('id');
+// const url= 'http://localhost/userTracks?list=fav&id='+localStorage.getItem('id');
 
 async function getData() {
 
@@ -281,8 +281,8 @@ function popup(option) {
 async function add(elm) {
     const list='pl'+elm.innerText.replace('Add to Playlist ','');
     var track=document.getElementById('selected_song').innerText.replaceAll(' ','+');
-    // const url_='https://sortify-1.herokuapp.com/addTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
-    const url_='http://localhost/addTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
+    const url_='https://sortify-1.herokuapp.com/addTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
+    // const url_='http://localhost/addTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
     var status= 0;
     await fetch(url_).then(response => response.text()).then(res => status=res);
     if(status==1){
@@ -293,8 +293,8 @@ async function add(elm) {
 async function remove() {
     const list='fav';
     var track=document.getElementById('selected_song').innerText.replaceAll(' ','+');
-    // const url_='https://sortify-1.herokuapp.com/removeTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
-    const url_='http://localhost/removeTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
+    const url_='https://sortify-1.herokuapp.com/removeTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
+    // const url_='http://localhost/removeTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
     var status= 0;
     await fetch(url_).then(response => response.text()).then(res => status=res);
     if(status==1){

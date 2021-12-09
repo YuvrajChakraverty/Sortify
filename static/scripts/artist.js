@@ -32,13 +32,13 @@ window.onload= async function() {
     document.getElementById("artistimg").src=document.getElementById('pic_url').innerText;
     
     const artist__name=document.getElementById('artistname').innerText.replaceAll(' ','%20');
-    // url= 'https://sortify-1.herokuapp.com/tracksdata/' + artist__name;
-    url= 'http://localhost/tracksdata/' + artist__name;
+    url= 'https://sortify-1.herokuapp.com/tracksdata/' + artist__name;
+    // url= 'http://localhost/tracksdata/' + artist__name;
     
     await getData();
     
-    // const url_='https://sortify-1.herokuapp.com/favArtists?id='+localStorage.getItem('id');
-    const url_='http://localhost/favArtists?id='+localStorage.getItem('id');
+    const url_='https://sortify-1.herokuapp.com/favArtists?id='+localStorage.getItem('id');
+    // const url_='http://localhost/favArtists?id='+localStorage.getItem('id');
         
         await fetch(url_)
             .then(response => response.json())
@@ -217,8 +217,8 @@ function favStatusChange(image) {
     if(fav==0){
         image.src="../static/imgs/icons/fav.png";
         act='add';
-        // const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
-        const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
+        const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
+        // const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
         fetch(_url);
         fav=1;
     }
@@ -226,8 +226,8 @@ function favStatusChange(image) {
     else if(fav==1){
         image.src="../static/imgs/icons/notfav.png";
         act='rem'
-        // const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
-        const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
+        const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
+        // const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
         fetch(_url);
         fav=0;
     }
@@ -279,8 +279,8 @@ async function add(elm) {
         list='fav';
     }
     var track=document.getElementById('selected_song').innerText.replaceAll(' ','+');
-    // const url_='https://sortify-1.herokuapp.com/addTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
-    const url_='http://localhost/addTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
+    const url_='https://sortify-1.herokuapp.com/addTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
+    // const url_='http://localhost/addTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
     var status= 0;
     await fetch(url_).then(response => response.text()).then(res => status=res);
     if(status==1){
