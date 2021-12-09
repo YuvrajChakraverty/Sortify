@@ -52,38 +52,6 @@ header{
     }
 }
 
-/* navbar */
-
-nav{
-    height: 40px;
-    background: rgb(44, 44, 44);
-    position: sticky;
-    top: 0px;
-    z-index: 1;
-}
-
-nav ul{
-height: 40px;
-list-style: none;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-}
-
-nav ul li a{
-    font-size: 18px;
-    text-decoration: none;
-    color: white;
-    margin: 0px 45px;
-    font-family: 'Mitr', sans-serif;
-
-}
-
-nav ul li a:hover{
-    color: rgb(220, 120, 220);
-}
-
 /* footer */
 
 footer{
@@ -129,8 +97,9 @@ footer{
 }
 
 #copyright{
-    height: 30px;
+    height: 50px;
     color: white;
     font-family: 'Mitr', sans-serif;
     text-align: center;
+    font-size: 13px;
 }

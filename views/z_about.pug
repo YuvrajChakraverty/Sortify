@@ -3,21 +3,14 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title About
+  title Sortify- About
   link(rel='icon' type='image/png' href='../static/imgs/icons/favicon.png')
-style.
-  body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(220, 120, 220);
-  margin-top: 100px;
-  }
-  #message{
-  text-align: center;
-  font-size: 50px;
-  }
+  script(src="../static/scripts/footer-link.js")
+  style 
+   include ../static/styles/footer-link.css
+
   
 #message
-  | This is an experimental website developed by<br>Yuvraj Chakraverty (Student at MAIT (GGSIPU University)).<br>Some features might not be available as of now.
+  | This is an experimental website<br>developed by Yuvraj Chakraverty<br>(student, MAIT (GGSIPU)).<br>
+  #back(onclick="back()")
+   | Go back

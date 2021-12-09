@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+
 /* section */
 
 section{
@@ -5,19 +7,22 @@ section{
     align-items: center;
     justify-content: center;
     height: 640px;
-    background: rgba(220, 120, 220, 0.8);
+    /* background: rgba(80, 163, 80, 0.82); */
+    background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%);
+    font-family: 'Manrope', sans-serif;
 }
 
 #artists{
     padding: 20px;
     height: 540px;
-    width: 750px;
+    width: 850px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: repeat(3,auto);
     grid-gap: 20px;
-    background: rgba(81, 194, 115, 1);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 30px;
+    box-shadow: 2px 2px gray;
 }
 
 .artist{
@@ -26,7 +31,7 @@ section{
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    background: rgb(98, 159, 209);
+    background: rgba(255, 255, 255, 0.0);
     text-decoration: none;
     color: black;
     font-size: 20px;
@@ -34,9 +39,14 @@ section{
 }
 
 .artist:hover{
-    background: rgb(110, 170, 220);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 1px 1px rgb(155, 155, 155);
 }
 
 .pic{
     height: 130px;
+}
+
+#layout2Artists{
+    border-bottom: 3px solid rgb(81, 194, 115);
 }

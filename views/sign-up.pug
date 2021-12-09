@@ -1,7 +1,7 @@
 extends layout.pug 
 
 block title 
-    title Sign-Up
+    title Sortify- Sign-Up
 
 block script
     script(src="../static/scripts/sign-up.js") 
@@ -10,8 +10,11 @@ block style
     include ../static/styles/sign-up.css
 
 block content 
- section 
-  form(action='/sign-up' method='POST')
+ section#section
+  div
+   #message 
+    | An account with this email already exists !
+  form#form(action='/sign-up' method='POST' onclick='hide()')
     #alert 
      |#{msg}
     h1 
@@ -23,15 +26,20 @@ block content
     #name
      input.input(type="text" placeholder='Name' name='name' required maxlength='15')
      #nm_msg.msg
-      |( this is not your username )
+      |[ this is not your username ]
     div
      input#password.input(type='password' placeholder='Create Password' name='password' required oninput="pass_valid(this)" maxlength='20')
      img#sh(src='../static/imgs/icons/hide_eye.png' onclick="change(this)")
      div#pw_msg.msg
-      |(length between 8-20 characters, white spaces not allowed, must have at least 1 : <br>
-      |uppercase; lowercase; digit(0-9); special character[ !, @, #, $, %, &, ? ])
-    div 
+      |[ length between 8-20 characters, spaces not allowed,<br>must have at least 1 :
+      |uppercase; lowercase; digit(0-9);<br>special character ( !, @ , # , $ , % , & , ? ) ]
+    div
      input#checkbox(type="checkbox" checked=false onclick="btnchange(this)")
      |  I agree to 
-     a(href="/T&C") T&C
+     a#tnc(href="/T&C") T&C
     input#submit.btn(type='submit' value='Sign-Up'  disabled=true)
+  #signin 
+   | Already have an account?  
+   a(href="/") Sign-In 
+  #note 
+    |Note: The audio will stop playing on reloading or navigating to a different page.

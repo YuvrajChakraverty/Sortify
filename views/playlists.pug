@@ -1,20 +1,36 @@
-extends layout.pug 
+extends layout2.pug 
 
 block title 
-    title Playlists
+    title Sortify- Playlists
 
 block script 
+    script(src="../static/scripts/playlists.js")
 
 block style 
     include ../static/styles/playlists.css
 
 block content
  section#content
-  #pp
-    h2 Public Playlists
-    div
-      | (
-      a(href='/sign-in') Sign-in
-      |  to see your private playlists)
+  
+    
   section#playlists
-    p --- no public playlists available right now ---
+    p#p My Playlists
+    hr
+    ul#list 
+     li.li
+      a(href="/playlist?playlist=1")
+       |Playlist 1
+       #p1.p
+        |this playlist is empty
+     li.li
+      a(href="/playlist?playlist=2")
+       |Playlist 2
+       #p2.p
+        |this playlist is empty
+     li.li
+      a(href="/playlist?playlist=3")
+       |Playlist 3
+       #p3.p
+        |this playlist is empty
+       
+    hr

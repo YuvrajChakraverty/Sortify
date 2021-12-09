@@ -3,24 +3,18 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Technologies
+  title Sortify- Technologies
   link(rel='icon' type='image/png' href='../static/imgs/icons/favicon.png')
-style.
-  body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(220, 120, 220);
-  margin-top: 100px;
-  font-size: 50px
-  }
-  #message{
-  text-align: center;
-  }
+  script(src="../static/scripts/footer-link.js")
+  style 
+   include ../static/styles/footer-link.css
   
 #message
-  | Techonologies/Libraries used to develop:<br><br>
-#list
-  | > Front-end: HTML, CSS, JavaScript<br>> Back-end: NodeJS, Express, Mongoose<br>> Database: MongoDB Atlas<br>> Cloud Storage: Firebase Storage
+  | Tools/Technologies<br>used in development:<br>
+  #tools
+   |• Front-end: HTML5, CSS3, JavaScript<br>• Back-end: NodeJS, Express, Mongoose, Pug<br>• Database: MongoDB Atlas<br>• Cloud Storage: Google Cloud Platform
+  #tech_note 
+   |Note: Since this website makes use of pure JavaScript,<br>the audio will stop playing on navigating or reloading a page.
+  #back(onclick="back()")
+   | Go back
 

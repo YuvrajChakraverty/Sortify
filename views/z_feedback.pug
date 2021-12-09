@@ -3,21 +3,27 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Feedback
+  title Sortify- Feedback
   link(rel='icon' type='image/png' href='../static/imgs/icons/favicon.png')
-style.
-  body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(220, 120, 220);
-  margin-top: 100px;
-  }
-  #message{
-  text-align: center;
-  font-size: 50px;
-  }
+  script(src="../static/scripts/footer-link.js")
+  script(src="../static/scripts/feedback.js")
+  style 
+   include ../static/styles/footer-link.css
   
 #message
-  | We are not accepting feedbacks as of now.
+  |Give feedback/ Report bugs/&nbsp &nbsp &nbsp &nbsp <br>Request addition of songs<br>for existing artists:<br>
+  #feedback_notes 
+   |<br>Please take note of the following before writing a feedback:<br><br>
+   |• This website has only been designed to be used on a desktop/laptop.<br>
+   |• Since this website has been developed using pure JavaScript, the audio<br>&nbsp &nbsp will stop playing on reloading or navigating to a different page.
+  form#form(action='/feedback' method='POST')
+   textarea#feedback_text(form='form' name="feedback" placeholder="Write your feedback here" maxlength='300' oninput='char_check(this)' required)
+   #char_count 
+    | 300 characters remaining
+   #formmsg
+    |[Your email & name will be used for the submission of this feedback.]
+   input#email.hiddenField(type="text" name='email')
+   input#name.hiddenField(type="text" name='name')
+   input#submit(type="submit")
+  #back(onclick="back()")
+   | Go back

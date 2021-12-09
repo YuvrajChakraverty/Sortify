@@ -1,0 +1,56 @@
+doctype html 
+html
+ head
+  block title 
+  link(rel='icon' type='image/png' href='../static/imgs/icons/favicon.png')
+  block script 
+  style 
+   include ../static/styles/layout2.css
+   block style
+
+body
+ 
+ header
+  #header
+    a(href='/home')
+      #icon.header
+        img(src='../static/imgs/icons/Sortify.png' alt='Sortify-logo')
+      #heading_layout2.header
+        h2 Sortify
+ nav
+  ul
+    li#layout2Home
+      a(href='/home') Home
+    li#layout2Artists
+      a(href='/artists') Artists
+    li#layout2Playlists
+      a(href='/playlists') Playlists
+    li#layout2Favorites
+      a(href='/favorites') Favorites
+    li#layout2Account
+      a(href='/account') Account
+ 
+ 
+ block content 
+
+ footer
+  #footicons
+    a(href='https://www.instagram.com/yuvraj_0310/' target='_blank')
+      img.footicon(src='../static/imgs/icons/Instagram.png' alt='Instagram')
+    a(href='https://www.linkedin.com/in/yuvraj-chakraverty/' target='_blank')
+      img.footicon(src='../static/imgs/icons/linkedin.png' alt='Instagram')
+    a(href='https://github.com/YuvrajChakraverty' target='_blank')
+      img.footicon(src='../static/imgs/icons/github.png' alt='Twitter')
+  div
+    ul#footlinks
+      li
+        a(href='/about') About
+      li
+        a(href='/contact') Contact
+      li
+        a(href='/technologies') Technologies
+      li
+        a(href='/feedback') Feedback
+  #copyright
+    | © 2021 Sortify | All rights reserved.<br><br>
+    | version 2.0.0

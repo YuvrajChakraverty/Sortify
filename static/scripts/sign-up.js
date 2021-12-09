@@ -1,12 +1,17 @@
 let passok=false;
 let emailok=false;
 
-window.onload= function() {
+window.onload= async function() {
   const msg= document.getElementById("alert").innerHTML;
+  const message= document.getElementById("message");
   if(msg==1){
-    console.log("hello")
-    alert("An account with this email already exists");
+    message.style.visibility='visible';
   }
+}
+
+function hide() {
+  const message= document.getElementById("message");
+  message.style.visibility='hidden';
 }
 
 function change(eye) {
@@ -41,7 +46,7 @@ function pass_valid(pass) {
 function email_valid(email) {
   let msg= document.getElementById('em_msg');
 
-  var re= /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  var re= /^[a-z0-9._-]+@[a-z.-]+\.[a-z]{2,6}$/;
   if(re.test(email.value)) {
     msg.style.visibility= "hidden";
     emailok= true;

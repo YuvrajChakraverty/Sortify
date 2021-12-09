@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    position: relative;
+    margin: 0px;
+    padding-right: 100px;
+    font-family: 'Manrope', sans-serif;
+}
+
+body::before{
+    content: "";
+    background-image: url(../static/imgs/backgrounds/b2.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+    
+#message{
+    text-align: left;
+    font-size: 43px;
+    }
+
+#message>a{
+    font-size: 30px;
+    text-decoration: none;
+}
+
+#back{
+    font-size: 20px;
+    color: blue;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+#tools{
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+#tech_note{
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+#feedback_notes{
+    font-size: 12px;
+}
+
+#from{
+    display: flex;
+    flex-direction: column;
+}
+
+#feedback_text{
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 400px;
+    height: 130px;
+    max-width: 500px;
+    max-height: 200px;
+    box-sizing: border-box;
+}
+
+#char_count{
+    margin-top: -12px;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+#formmsg{
+    font-size: 10px;
+}
+
+.hiddenField{
+    display: none;
+}
+
+#submit{
+    border-radius: 5px;
+    padding: 3px 8px;
+    cursor: pointer;
+}
+
+#submit:hover{
+    background-color: rgb(194, 194, 194);
+}

@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+
+/* section */
+
+section{
+    height: 681px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-family: 'Manrope', sans-serif;
+}
+
+section::before{
+    content: "";
+    background-image: url(../static/imgs/backgrounds/signup-bg.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+footer{
+    display: none;
+}
+
+#content{
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.33);
+    padding: 33px;
+    border-radius: 15px;
+}
+
+#content>a{
+    text-decoration: none;
+    color: rgb(0, 255, 0);
+    font-size: 30px;
+}

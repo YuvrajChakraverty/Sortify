@@ -1,0 +1,38 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Account updated
+  link(rel='icon' type='image/png' href='../static/imgs/icons/favicon.png')
+style.
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+  
+  body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%);
+  text-align: center;
+  height: 98vh;
+  font-family: 'Manrope', sans-serif;
+  }
+  #message{
+  font-size: 45px;
+  }
+
+  #back{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 20px;
+    text-decoration: none;
+  }
+
+#message
+  |Your account has been<br>successfully updated.
+a#back(href="/") 
+  | Go to Sign-in
+
+script.
+ localStorage.removeItem('token');

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+
+#container{
+    height: 640px;
+    /* background: rgba(80, 163, 80, 0.82); */
+    background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Manrope', sans-serif;
+}
+
+#message{
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 47px;
+    visibility: hidden;
+}
+
+#alert{
+    display: none;
+}
+
+#section{
+    height: 450px;
+    width: 550px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    padding-bottom: 30px;
+    box-shadow: 1px 1px gray;
+}
+
+#creds{
+    padding-top: 18px;
+    height: 298px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.label{
+    margin: 0px 0px 5px 15px;
+}
+
+.cred{
+    height: 50px;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 0px 15px;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    box-shadow: 1px 1px gray;
+}
+
+.msg{
+    color: red;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 5px;
+    visibility: hidden;
+}
+
+#sh{
+    height: 27px;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 12px;
+    margin-left: -40px;
+    visibility: hidden;
+}
+
+.hiddenF{
+    display: none;
+    visibility: hidden;
+}
+
+#options{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.option{
+    height: 40px;
+    width: 130px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: none;
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+    box-shadow: 1px 1px gray;
+}
+
+#cancel:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#submit:enabled:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#note{
+    margin-top: 20px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#layout2Account{
+    border-bottom: 3px solid rgb(81, 194, 115);
+}

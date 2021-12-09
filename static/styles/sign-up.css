@@ -1,15 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+
 /* section */
 
 section{
-    background: rgba(220, 120, 220, 0.8);
-    height: 640px;
+    height: 680px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    font-family: 'Mitr', sans-serif;
+}
+
+section::before{
+    content: "";
+    background-image: url(../static/imgs/backgrounds/signup-bg.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#note{
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-top: 20px;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    color: white;
+}
+
+#message{
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+    visibility: hidden;
 }
 
 form{
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.6);
     border-radius: 20px;
     height: 420px;
     width: 500px;
@@ -18,6 +52,7 @@ form{
     align-items: center;
     justify-content: space-evenly;
     padding: 40px 0px;
+    box-shadow: 1px 1px black;
 }
 
 form h1{
@@ -29,12 +64,14 @@ form h1{
     padding: 5px;
     height: 30px;
     width: 350px;
-    border-radius: 20px;
+    border-radius: 10px;
     outline: none;
     text-align: center;
     font-weight: bold ;
     font-size: 15px;
-    background: rgb(233, 232, 232);
+    background: rgba(233, 232, 232, 0.5);
+    border: none;
+    box-shadow: 1px 1px gray;
 }
 
 #sh{
@@ -47,29 +84,51 @@ form h1{
 
 .msg{
     color: red;
-    font-size: 11px;
+    font-size: 12px;
     text-align: center;
     margin-top: 5px;
+    visibility: hidden;
 }
 
 #nm_msg{
     color: black;
+    visibility: visible;
+}
+
+#tnc{
+    text-decoration: none;
+    color: blue;
 }
 
 .btn{
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 8px;
     width: 80px;
     font-weight: bold;
-    
+    /* border: none; */
 }
 
 .btn:enabled:hover {
     background: rgb(110, 170, 220) ;
+    background: rgb(100, 172, 122);
     cursor: pointer;
 }
 
 #alert{
     display: none;
     visibility: hidden;
+}
+
+#signin{
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    font-size: 15px;
+    font-family: 'Manrope', sans-serif;
+    color: white;
+}
+
+#signin>a{
+    text-decoration: none;
+    color: lightgreen;
 }

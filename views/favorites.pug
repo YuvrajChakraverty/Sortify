@@ -1,0 +1,26 @@
+extends layout2.pug 
+
+block title 
+    title Sortify- Favorites
+
+block script 
+    script(src="../static/scripts/favorites.js")
+ 
+block style 
+    include ../static/styles/favorites.css
+
+block content
+ #container
+  a#favSongs(href="/favorite-songs")
+   #songs.container
+    p#a.no
+     | - No Favorite Songs -
+
+    p#b
+     | 10 FavoriArte Songs
+  #favArtHeading
+   |Favorite Artists
+  #artists.container
+   #noArtists
+    p.no
+     | - No Favorite Artists -

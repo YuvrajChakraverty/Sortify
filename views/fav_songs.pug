@@ -1,0 +1,52 @@
+extends layout2.pug 
+
+block title 
+    title Sortify- Favourite Songs
+
+block script 
+    script(src="../static/scripts/fav-songs.js")
+ 
+block style 
+    include ../static/styles/fav_songs.css
+
+block content 
+ section
+  #container
+   #heading
+    #title
+     | Favorite Songs
+    #right
+     img#sort.headIcon(src="../static/imgs/icons/unsorted.png", alt="", onclick='sortList()')
+     img#shuffle.headIcon(src="../static/imgs/icons/no-shuffle.png", alt="", onclick='shufflePlay(this)')
+     #num_tracks 
+      |0 tracks
+   hr
+   ul#tracks
+   
+  #options
+   #selected_song 
+    |‎
+   #selected_song_artist
+    |‎
+   ul 
+    li.op(onclick='remove()')
+     |Remove from Favorites 
+    li.op(onclick='add(this)')
+     |Add to Playlist 1
+    li.op(onclick='add(this)')
+     |Add to Playlist 2
+    li.op(onclick='add(this)')
+     |Add to Playlist 3
+
+  #player
+   p#current_song
+    |‎ 
+   #controls 
+    img#prev.ctrl(src="../static/imgs/icons/next.png", alt="next", onclick="prev()")
+    audio#audio(controls='', autoplay=False, controlsList="nodownload", onended="next()")
+     source#audiourl(src="" type="audio/mpeg") 
+    img#next.ctrl(src="../static/imgs/icons/next.png", alt="next", onclick="next()")
+
+   img#collapse(src="../static/imgs/icons/collapse.png", alt="", onclick='collapse(this)')
+
+    

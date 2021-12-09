@@ -1,23 +1,54 @@
 extends layout.pug 
 
 block title 
-    title Sign-In
+    title Sortify
 
 block script 
     script(src="../static/scripts/sign-in.js") 
-
+    
 block style 
     include ../static/styles/sign-in.css
 
-block content
- section
-  form(action='/sign-in' method='POST')
-    #alert 
-     |#{msg}
-    h1 
-     | Sign-In
-    input.input(type='email' placeholder='E-mail' name='email' required)
-    div
-     input#password.input(type='password' placeholder='Password' name='password' required)
-     img#sh(src='../static/imgs/icons/hide_eye.png' onclick="change()")
-    input.btn(type='submit' value='Sign-In')
+block content 
+    #section
+     h1 Stream Music for Free
+     div
+      #message 
+       |‎ 
+
+      form#form(action='/' method='POST' autocomplete='off' onclick='hide()')
+        #alert 
+         |#{msg}
+        input.input(type='email' placeholder='E-mail' name='email' required)
+        div
+         input#password.input(type='password' placeholder='Password' name='password' required)
+         img#sh(src='../static/imgs/icons/hide_eye.png' onclick="change()")
+        input.btn(type='submit' value='Sign-In')
+
+      #signup
+       | Don't have an account?  
+       a(href="/sign-up") Sign-Up
+     
+     #pros 
+      .pro 
+       img.tileimg(src='../static/imgs/icons/ads.png' alt='No-Ads')
+       |Ad-free music
+      .pro 
+       img.tileimg(src='../static/imgs/icons/play.png' alt='Unlimited playbacks')
+       |Unlimited playbacks
+      .pro  
+       img.tileimg(src='../static/imgs/icons/star.png' alt='Handpicked')
+       |Hand-picked artists
+
+    //-  #banner
+    //-   div Stream songs for free!
+    //-  #tiles
+    //-   .tile
+    //-    img.tileimg(src='../static/imgs/icons/ads.png' alt='No-Ads')
+    //-    div Ad-free music
+    //-   #middletile.tile
+    //-    img.tileimg(src='../static/imgs/icons/play.png' alt='Unlimited playbacks')
+    //-    div Unlimited playbacks
+    //-   .tile
+    //-    img.tileimg(src='../static/imgs/icons/star.png' alt='Handpicked')
+    //-    div Hand-picked songs

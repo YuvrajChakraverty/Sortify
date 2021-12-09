@@ -1,12 +1,18 @@
 window.onload= function() {
   const msg= document.getElementById("alert").innerHTML;
+  const message= document.getElementById("message");
+
   if(msg==1){
-    console.log("hello")
-    alert("Account doesn't exist!");
+    message.textContent="Account not Found !";
+    message.style.visibility='visible';
   }
+
   if(msg==2){
-    alert("Incorrect password!");
+    message.textContent="Incorrect Password !";
+    message.style.visibility='visible';
   }
+
+  
 }
 
 function change() {
@@ -19,4 +25,9 @@ function change() {
      {password.setAttribute("type","password");
      sh.setAttribute("src","../static/imgs/icons/hide_eye.png")}
      
+}
+
+function hide() {
+  const message= document.getElementById("message");
+  message.style.visibility='hidden';
 }

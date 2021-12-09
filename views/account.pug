@@ -1,0 +1,36 @@
+extends layout2.pug 
+
+block title 
+    title Sortify- Account
+
+block script 
+    script(src="../static/scripts/account.js")
+ 
+block style 
+    include ../static/styles/account.css
+
+block content
+ #container
+  #section
+   #creds
+    #emailblock
+     .label
+      |Email
+     #email.cred 
+      |
+    #nameblock
+     .label
+      |Name
+     #name.cred 
+      |
+    #passblock 
+     .label
+      |Password
+     #pass.cred
+      |••••••••••••
+   #userid
+    |
+   #options 
+    #delete.option
+     |Delete Account
+    a#update.option(href="/update-account") Update Details

@@ -1,48 +1,105 @@
-/* banner */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+
+#content{
+    /* background: rgba(80, 163, 80, 0.82); */
+    background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%);
+    height: 640px;
+    font-family: 'Manrope', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
 
 #banner{
+    width: 100%;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    background: rgb(81, 194, 115);
-    height: 320px;
-    font-size: 70px;
-    font-family: 'Mitr', sans-serif;
-    text-shadow: rgb(220, 120, 220) 2px 2px;
+    padding: 0px 20px;
+    /* background: rgb(140, 120, 170); */
+    background: rgba(190, 30, 255, 0.4);
+    height: 50px;
+    box-sizing: border-box;
 }
 
-/* tiles */
-
-#tiles{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background: rgb(220, 120, 220);
-    height: 320px;
-    padding: 0px 10px;
+#greet{
+    font-size: 30px;
+    text-shadow: 1px 1px green;
 }
 
-.tile{
-    color: white;
-    background: rgba(0, 0, 0, 0.6);
-    box-shadow: black 5px 5px;
+#logout{
+    cursor: pointer;
+}
+
+/*  */
+
+#subhead{
+    font-size: 30px;
+}
+
+#utility{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 130px;
-    width: 230px;
-    border-radius: 15px;
-    padding: 10px;
-    font-family: 'Mitr', sans-serif;
-    font-size: 22px;
+    height: 400px;
 }
 
-#middletile{
-    margin: 0px 20px;
+.tile{
+    color: black;
+    font-size: 32px;
+    height: 120px;
+    width: 280px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 2px 2px green;
 }
 
-.tileimg{
-    height:50px;
-    filter: invert(1);
+.tile:hover{
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#dateTime{
+    height: 120px;
+    box-sizing: border-box;
+    padding: 7px 20px;
+    /* background: rgb(140, 120, 170); */
+    background: rgba(255, 255, 255, 0.1);
+    text-align: center;
+    border-radius: 10px;
+    font-size: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-shadow: 1px 1px green;
+}
+
+#date{
+    font-size: 15px;
+    text-shadow: none;
+}
+
+#expand{
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    margin-top: -32px;
+    display: none;
+}
+
+#collapse{
+    cursor: pointer;
+    margin-top: 10px;
+    height: 30px;
+    width: 30px;
+}
+
+#layout2Home{
+    border-bottom: 3px solid rgb(81, 194, 115);
 }

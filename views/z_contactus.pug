@@ -3,22 +3,18 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Contact Us
+  title Sortify- Contact Us
   link(rel='icon' type='image/png' href='../static/imgs/icons/favicon.png')
-style.
-  body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(220, 120, 220);
-  margin-top: 100px;
-  }
-  #message{
-  text-align: center;
-  font-size: 50px;
-  }
+  script(src="../static/scripts/footer-link.js")
+  style 
+   include ../static/styles/footer-link.css
   
 #message
-  | Use the social networking links provided<br>in the footer to contact the developer.
+  //- | Use the social platform<br>links provided in the footer<br>to contact the developer.<br>
+  | To contact Yuvraj Chakraverty,<br>follow the given links:<br>
+  a(href='https://www.linkedin.com/in/yuvraj-chakraverty/' target='_blank') • LinkedIn -><br>
+  a(href='https://github.com/YuvrajChakraverty' target='_blank') • GitHub -><br>
+  a(href='https://www.instagram.com/yuvraj_0310/' target='_blank') • Instagram ->
+  #back(onclick="back()")
+   | Go back 
 

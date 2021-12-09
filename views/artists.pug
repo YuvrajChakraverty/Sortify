@@ -1,9 +1,10 @@
-extends layout.pug 
+extends layout2.pug 
 
 block title 
-    title Artists
+    title Sortify- Artists
 
 block script 
+    script(src="../static/scripts/artists.js")
  
 block style 
     include ../static/styles/artists.css
@@ -11,30 +12,4 @@ block style
 block content 
  section
   #artists
-    a.artist(href='/artist?id=6163d7feb1cdaee2641ab782')
-      img.pic(src='https://firebasestorage.googleapis.com/v0/b/sortify-1.appspot.com/o/artists%2FBillie.png?alt=media&token=0b40fd5b-e751-403f-adaf-18d6da394672' alt='')
-      |                 Billie Eilish
-    a.artist(href='/artist?id=6163d8cfb1cdaee2641ab783')
-      img.pic(src='https://firebasestorage.googleapis.com/v0/b/sortify-1.appspot.com/o/artists%2FDua.png?alt=media&token=d3a32767-6ca7-411e-a5a6-8906fc41ff06' alt='')
-      |                 Dua Lipa
-    a.artist(href='/artist?id=6163d9f9b1cdaee2641ab784')
-      img.pic(src='https://firebasestorage.googleapis.com/v0/b/sortify-1.appspot.com/o/artists%2FEd.png?alt=media&token=2ac4d9d2-7957-44e8-b707-c178ca954e31' alt='')
-      |                 Ed Sheeran
-    a.artist(href='/artist?id=6163da18b1cdaee2641ab785')
-      img.pic(src='https://firebasestorage.googleapis.com/v0/b/sortify-1.appspot.com/o/artists%2FHalsey.png?alt=media&token=1e1dd16e-5759-45d3-b6fe-6702b94ea275' alt='')
-      |                 Halsey
-    a.artist(href='/artist?id=6163da53b1cdaee2641ab786')
-      img.pic(src='https://firebasestorage.googleapis.com/v0/b/sortify-1.appspot.com/o/artists%2FSelena.png?alt=media&token=92666b8f-135e-4304-a173-5a7220d36e13' alt='')
-      |                 Selena Gomez
-    a.artist(href='/artist?id=6163daabb1cdaee2641ab787')
-      img.pic(src='https://firebasestorage.googleapis.com/v0/b/sortify-1.appspot.com/o/artists%2FShawn.png?alt=media&token=207a3e15-4511-4841-9e22-990fc1642257' alt='')
-      |                 Shawn Mendes
-    a.artist(href='/artist?id=6163dae4b1cdaee2641ab788')
-      img.pic(src='https://firebasestorage.googleapis.com/v0/b/sortify-1.appspot.com/o/artists%2FSia.png?alt=media&token=ee2f7ac3-66f5-4371-88ff-fd5c85b1f88f' alt='')
-      |                 Sia
-    a.artist(href='/artist?id=6163db04b1cdaee2641ab789')
-      img.pic(src='https://firebasestorage.googleapis.com/v0/b/sortify-1.appspot.com/o/artists%2FWeeknd.png?alt=media&token=f1b08e6d-baf1-4813-b95b-6eb75eb278d3' alt='')
-      |                 The Weeknd
-    a.artist(href='/artist?id=6163db37b1cdaee2641ab78a')
-      img.pic(src='https://firebasestorage.googleapis.com/v0/b/sortify-1.appspot.com/o/artists%2FZayn.png?alt=media&token=f0011c36-7aab-4ef4-9e5c-c3ad5a61d97e' alt='')
-      |                 Zayn
+    

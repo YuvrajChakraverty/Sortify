@@ -1,41 +1,90 @@
-/* section */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
 
-section{
-    background: rgba(220, 120, 220, 0.8);
-    height: 640px;
+
+body{
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    
+}
+
+::-webkit-scrollbar {
+    height: 12px;
+    width: 13px;
+    background: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+    border: 2px solid rgb(61, 61, 61);
+}
+
+::-webkit-scrollbar-corner {
+    background: black;
+}
+#section{
+    
+    position: relative;
+    height: 680px; 
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 40px 0px;
+}
+
+#section::before {
+    content: "";
+    background-image: url(../static/imgs/backgrounds/home-bg.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#section>h1{
+    font-size: 25px;
 }
 
 form{
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    height: 400px;
-    width: 500px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    padding: 50px 0px;
+    padding: 0px 30px;
+    box-sizing: border-box;
 }
 
 form h1{
     font-family: 'Mitr', sans-serif;
-    font-size: 35px;
-
+    font-size: 30px;
+    color: white;
 }
 
 .input{
     padding: 5px;
     height: 30px;
-    width: 350px;
-    border-radius: 20px;
+    width: 300px;
     outline: none;
     text-align: center;
     font-weight: bold ;
     font-size: 15px;
-    background: rgb(233, 232, 232);
+    background: rgba(255, 255, 255, 0.0);
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
 }
 
 #sh{
@@ -43,24 +92,70 @@ form h1{
     cursor: pointer;
     position: absolute;
     margin-top: 8px;
-    margin-left: -40px;
+    margin-left: -30px;
+    filter: invert(1);
 }
 
 .btn{
-    padding: 5px;
     border-radius: 10px;
-    width: 80px;
+    width: 100px;
+    height: 40px;
     cursor: pointer;
     font-weight: bold;
-    
+    background-color: rgba(255, 255, 255, 0.04);
+    border: none;
+    font-size: 18px;
+    color: rgb(200, 200, 200);
 }
 
 .btn:hover{
-    background: darkcyan;
-    background: rgb(110, 170, 220) ;
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
 #alert{
     display: none;
     visibility: hidden;
+}
+
+#message{
+    visibility: hidden;
+    margin-bottom: 10px;
+    color: rgb(220, 100, 100);
+    text-align: center;
+}
+
+#signup{
+    text-align: center;
+    margin-bottom: 150px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+#signup>a{
+    color: lightgreen;
+    text-decoration: none;
+}
+
+#pros{
+    width: 720px;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pro{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    color: black;
+    font-size: 20px;
+}
+
+.tileimg{
+    height: 30px;
+    margin-right: 10px;
 }

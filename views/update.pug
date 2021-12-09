@@ -1,0 +1,49 @@
+extends layout2.pug 
+
+block title 
+    title Update Account
+
+block script 
+    script(src="../static/scripts/update.js")
+ 
+block style 
+    include ../static/styles/update.css
+
+block content
+ #container
+  #message 
+   | An account with this email already exists !
+   #alert 
+    |#{msg}
+  form#section(action='/update-account' method='POST' autocomplete='off' onclick='hide()')
+   #creds
+    #emailblock
+     .label
+      |Email
+     input#email.cred(type='email' placeholder='E-mail' value="" name='email' required maxlength='40' oninput="email_valid(this)" onclick='btnchange()')
+     div#em_msg.msg
+      |( invalid email )
+
+    #nameblock
+     .label
+      |Name
+     input#name.cred(type="text" placeholder='Name' value="" name='name' required maxlength='15' oninput="namechange()" onclick='btnchange()')
+     .msg 
+      |
+
+    #passblock 
+     .label
+      |Password
+     input#password.cred(type='password' placeholder='Enter new password' value="••••••••••••" name='password' required oninput="pass_valid(this)" maxlength='20' onclick='btnchange(); newPass(this)')
+     img#sh(src='../static/imgs/icons/hide_eye.png' onclick="change(this)")
+     div#pw_msg.msg
+      |(length between 8-20, spaces not allowed, must have at least 1 :<br>
+      |uppercase; lowercase; digit(0-9); special character[ !, @, #, $, %, &, ? ])
+     input#id.hiddenF(type="text" name='id' value='')
+     input#passChange.hiddenF(type="text" name='passChange' value='00000000')
+   #options 
+    a#cancel.option(href="/account") Cancel
+    input#submit.option(type='submit' value='Save Changes' disabled=true)
+
+  #note 
+   |Note: You'll be asked to sign-in again once details are updated.
