@@ -2,8 +2,8 @@
 
 #container{
     height: 640px;
-    /* background: rgba(80, 163, 80, 0.82); */
-    background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%);
+    background: rgba(80, 163, 80, 0.82);
+    /* background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%); */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,7 +38,7 @@
 }
 
 #creds{
-    padding-top: 18px;
+    padding-top: 17px;
     height: 298px;
     display: flex;
     flex-direction: column;
@@ -68,6 +68,10 @@
     text-align: center;
     margin-top: 5px;
     visibility: hidden;
+}
+
+#nameblock{
+    margin-bottom: 18px;
 }
 
 #sh{

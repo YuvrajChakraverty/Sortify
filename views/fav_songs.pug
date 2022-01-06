@@ -19,15 +19,15 @@ block content
      img#sort.headIcon(src="../static/imgs/icons/unsorted.png", alt="", onclick='sortList()')
      img#shuffle.headIcon(src="../static/imgs/icons/no-shuffle.png", alt="", onclick='shufflePlay(this)')
      #num_tracks 
-      |0 tracks
+      |0 songs
    hr
    ul#tracks
    
   #options
    #selected_song 
-    |‎
+    |
    #selected_song_artist
-    |‎
+    |
    ul 
     li.op(onclick='remove()')
      |Remove from Favorites 
@@ -38,9 +38,12 @@ block content
     li.op(onclick='add(this)')
      |Add to Playlist 3
 
+  #succ_msg 
+   |Success
+
   #player
    p#current_song
-    |‎ 
+    |
    #controls 
     img#prev.ctrl(src="../static/imgs/icons/next.png", alt="next", onclick="prev()")
     audio#audio(controls='', autoplay=False, controlsList="nodownload", onended="next()")

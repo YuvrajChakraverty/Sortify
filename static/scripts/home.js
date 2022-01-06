@@ -43,6 +43,16 @@ function time(){
         }
         
         document.getElementById('greet').innerText=greetWord+localStorage.getItem('name');
+
+        let date= now.getDate();
+        let mon= now.getMonth();
+        let month= months[mon];
+        let year= now.getFullYear();
+        
+        document.getElementById('date').innerText=date+' '+month+' '+year;
+
+        document.getElementById('dateTime').style.visibility='visible';
+
     }
 
     hourNow=hours;
@@ -67,8 +77,6 @@ function time(){
     let year= now.getFullYear();
 
     document.getElementById('time').innerText= hour0+ hours+':'+min0+ mins+':'+sec0+ secs;
-    document.getElementById('date').innerText=date+' '+month+' '+year;
-
 
 }
 
@@ -87,7 +95,6 @@ function collapse(down){
 }
 
 function logout(){
-    localStorage.removeItem('token');
-    localStorage.removeItem('id');
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.replace('/');
 }

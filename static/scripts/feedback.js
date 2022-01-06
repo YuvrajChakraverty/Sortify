@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 window.onload= async function(){
     document.getElementById('form').action= '/feedback?id='+localStorage.getItem('id');
     const url_='https://sortify-1.herokuapp.com/getEmail?id='+localStorage.getItem('id');
@@ -11,6 +12,8 @@ window.onload= async function(){
     name.style.display='none';
     name.value= localStorage.getItem('name');
 }
+=======
+>>>>>>> urlbranch
 function char_check(textbox){
     document.getElementById('char_count').innerText= `${300 - textbox.value.length} characters remaining`;
 }

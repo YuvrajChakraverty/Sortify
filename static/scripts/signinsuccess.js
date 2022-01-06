@@ -1,7 +1,5 @@
 window.onload= function() {
-    localStorage.setItem('token', document.getElementById('token').innerText);
 
-    localStorage.setItem('id', document.getElementById('id').innerText);
     localStorage.setItem('name', document.getElementById('name').innerText);
     localStorage.setItem('fav', document.getElementById('nFav').innerText);
     localStorage.setItem('pl1', document.getElementById('nP1').innerText);

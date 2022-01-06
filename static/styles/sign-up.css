@@ -29,6 +29,7 @@ section::before{
 #note{
     background-color: rgba(0, 0, 0, 0.4);
     margin-top: 20px;
+    margin-bottom: 30px;
     font-size: 14px;
     padding: 5px 10px;
     border-radius: 7px;

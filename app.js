@@ -8,6 +8,7 @@ const path = require("path");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const bodyparser = require("body-parser");
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
@@ -20,6 +21,7 @@ db.once('open', function () {
 app.use('/static', express.static('static'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(cookieParser());
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -89,18 +91,16 @@ app.post("/", async(req, res) => {
                     email: rec.email,
                     password: rec.password
                  }
-                const accessToken = jwt.sign(user_data, process.env.JWT_SECURITY_KEY, { expiresIn: '1h' });
-                const data = {
-                    token: accessToken,
-                    id: rec._id,
-                    name: rec.name,
-                    favArtists: rec.arts,
-                    nFav: rec.fav.length,
-                    nP1: rec.pl1.length,
-                    nP2: rec.pl2.length,
-                    nP3: rec.pl3.length
-                }
-                res.status(200).render("signinsuccess", data);
+                 const data = {
+                     name: rec.name,
+                     favArtists: rec.arts,
+                     nFav: rec.fav.length,
+                     nP1: rec.pl1.length,
+                     nP2: rec.pl2.length,
+                     nP3: rec.pl3.length
+                    }
+                const accessToken = jwt.sign(user_data, process.env.JWT_SECURITY_KEY, { expiresIn: '604800s' });
+                res.status(200).cookie('token', accessToken, {path: '/', expires: new Date(Date.now() + 604799990), httpOnly: true, secure: true}).render("signinsuccess", data);
 
             }
 
@@ -151,16 +151,35 @@ app.get("/technologies", (req, res) => {
 });
 
 app.get("/feedback", (req, res) => {
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.redirect('/');
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
+    });
     res.status(200).render("z_feedback");
 });
 
 app.post("/feedback", async (req, res) => {
-    const rec= await User.findById(req.query.id);
+    var id=0;
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.redirect('/');
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      id=user.id;
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
+    });
+
+    const rec= await User.findById(id);
     if(rec==null){
-        res.send('Error! Sign-In again.');
+        res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
     }
     else{
         var feed = new feedback(req.body);
+        feed.email= rec.email;
+        feed.name= rec.name;
         feed.save().then(()=>{
             res.status(200).render("feedback_submitted");
         }).catch(()=>{
@@ -176,22 +195,57 @@ app.get("/feedback_", (req, res) => {
 // navbar
 
 app.get("/home", (req, res) => {
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.redirect('/');
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
+    });
     res.status(200).render("home");
 });
 
 app.get("/artists", (req,res) => {
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.redirect('/');
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
+    });
     res.status(200).render("artists");
 });
 
 app.get("/playlists", (req, res) => {
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.redirect('/');
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
+    });
     res.status(200).render("playlists");
 });
 
 app.get("/favorites", (req, res) => {
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.redirect('/');
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
+    });
     res.status(200).render("favorites");
 });
 
 app.get("/account", (req, res) => {
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.redirect('/');
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
+    });
     res.status(200).render("account");
 });
 
@@ -201,12 +255,26 @@ app.get("/account", (req, res) => {
 
    //  artists grid data API
 app.get("/artistsdata", async(req,res)=>{
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.status(403);
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)});
+    });
     const data= await artist.find().sort({name:1});
     res.send(data);
 });
 
-   //  artist page API  
+   //  artist page 
 app.get("/artist/:name", async(req, res) => {
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.redirect('/');
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
+    });
     
     const {name}= req.params;
     
@@ -223,6 +291,13 @@ app.get("/artist/:name", async(req, res) => {
 
    //  artist's tracks data API
 app.get("/tracksdata/:art_name",async(req,res)=>{
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.status(403);
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)});
+    });
     const {art_name} = req.params;
     const data =await track.find({artist:art_name}); 
     res.send(data);
@@ -231,7 +306,16 @@ app.get("/tracksdata/:art_name",async(req,res)=>{
    // Artist Favorite Status Change
 
 app.get("/artFavStatusChange", async (req,res) => {
-    const rec= await User.findById(req.query.id);
+    var id=0;
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.status(403);
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+        id=user.id;
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)});
+    });
+    const rec= await User.findById(id);
     if(rec==null){
         res.send('User not found!');
     }
@@ -240,6 +324,7 @@ app.get("/artFavStatusChange", async (req,res) => {
             if(rec.arts.includes(req.query.art)==false){
                 rec.arts.push(req.query.art);
                 rec.save();
+                res.send('1');
             }
         }
         else if(req.query.act=='rem'){
@@ -247,6 +332,7 @@ app.get("/artFavStatusChange", async (req,res) => {
                 const ind= rec.arts.indexOf(req.query.art);
                 rec.arts.splice(ind,1);
                 rec.save();
+                res.send('1');
             }
         }
         else{
@@ -259,6 +345,14 @@ app.get("/artFavStatusChange", async (req,res) => {
 // playlists
 
 app.get("/playlist", async(req, res) => {
+
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.redirect('/');
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
+    });
     
     let playlist= {
         number:req.query.playlist
@@ -271,13 +365,29 @@ app.get("/playlist", async(req, res) => {
 // favorites
 
 app.get("/favorite-songs", (req,res) => {
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.redirect('/');
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
+    });
     res.status(200).render("fav_songs");
 });
 
     // fav artists API
 
 app.get("/favArtists", async(req,res)=>{
-    const rec= await User.findById(req.query.id);
+    var id=0;
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.status(403);
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+        id=user.id;
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)});
+    });
+    const rec= await User.findById(id);
     if(rec==null){
         res.send('User not found!');
     }
@@ -296,15 +406,32 @@ app.get("/favArtists", async(req,res)=>{
 // account
 
 app.get("/update-account", (req,res) => {
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.redirect('/');
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
+    });
     res.status(200).render("update");
 });
 
 //  Account Update
 
 app.post("/update-account", async (req,res) => {
-    const rec= await User.findById(req.body.id);
+    var id=0;
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.redirect('/');
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+        id=user.id;
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
+    });
+
+    const rec= await User.findById(id);
     if(rec==null){
-        res.status(404).send('Error! Sign-In again.');
+        res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).redirect('/');
     }
     else{
         var emailok=false;
@@ -325,8 +452,8 @@ app.post("/update-account", async (req,res) => {
             }
             if(req.body.passChange=='00000000'){
                 update.password= rec.password;
-                await User.findOneAndUpdate({_id: req.body.id}, update).then(()=>{
-                    res.status(200).render('updated');
+                await User.findOneAndUpdate({_id: id}, update).then(()=>{
+                    res.status(200).cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).render('updated');
                 }).catch(()=>{
                     res.status(400).send("Error saving!");
                 })
@@ -335,8 +462,8 @@ app.post("/update-account", async (req,res) => {
                 const salt =  await bcrypt.genSalt(10);
                 const hashedPass = await bcrypt.hash(req.body.password, salt);
                 update.password= hashedPass;
-                await User.findOneAndUpdate({_id: req.body.id}, update).then(()=>{
-                    res.status(200).render('updated');
+                await User.findOneAndUpdate({_id: id}, update).then(()=>{
+                    res.status(200).cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).render('updated');
                 }).catch(()=>{
                     res.status(400).send("Error saving!");
                 })
@@ -353,17 +480,20 @@ app.post("/update-account", async (req,res) => {
 });
 
 app.get("/deleteAccount", async(req,res)=>{
-    const rec= await User.findById(req.query.id);
-    if(rec==null){
-        res.send('User not found!');
+    var id=0;
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.status(403);
     }
-    else{
-        User.deleteOne({_id: req.query.id}).then(()=>{
-            res.send('1');
-        }).catch(()=>{
-            res.status(400).send("Error!");
-        })
-    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+      id=user.id;
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)});
+    });
+    User.deleteOne({_id: id}).then(()=>{
+        res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)}).send('1');
+    }).catch(()=>{
+        res.status(400).send("Error!");
+    });
 
 });
 
@@ -377,7 +507,16 @@ app.get("/account-deleted", (req,res)=>{
    // User Tracks API
 
 app.get("/userTracks", async(req,res)=>{
-    const rec= await User.findById(req.query.id);
+    var id=0;
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.status(403);
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+        id=user.id;
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)});
+    });
+    const rec= await User.findById(id);
     if(rec==null){
         res.send('User not found!');
     }
@@ -440,7 +579,16 @@ app.get("/userTracks", async(req,res)=>{
    // Add Track API
 
 app.get("/addTrack", async(req,res) => {
-    const rec= await User.findById(req.query.id);
+    var id=0;
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.status(403);
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+        id=user.id;
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)});
+    });
+    const rec= await User.findById(id);
     if(rec==null){
         res.send('User not found!');
     }
@@ -452,12 +600,18 @@ app.get("/addTrack", async(req,res) => {
                 rec.save();
                 res.send('1');
             }
+            else{
+                res.send('2');
+            }
         }
         else if(req.query.list=='pl1'){
             if(rec.pl1.includes(song)==false){
                 rec.pl1.push(song);
                 rec.save();
                 res.send('1');
+            }
+            else{
+                res.send('2');
             }
         }
         else if(req.query.list=='pl2'){
@@ -466,12 +620,18 @@ app.get("/addTrack", async(req,res) => {
                 rec.save();
                 res.send('1');
             }
+            else{
+                res.send('2');
+            }
         }
         else if(req.query.list=='pl3'){
             if(rec.pl3.includes(song)==false){
                 rec.pl3.push(song);
                 rec.save();
                 res.send('1');
+            }
+            else{
+                res.send('2');
             }
         }
         else{
@@ -483,7 +643,16 @@ app.get("/addTrack", async(req,res) => {
     // remove track API 
 
 app.get("/removeTrack", async(req,res) => {
-    const rec= await User.findById(req.query.id);
+    var id=0;
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.status(403);
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+        id=user.id;
+      if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)});
+    });
+    const rec= await User.findById(id);
     if(rec==null){
         res.send('User not found!');
     }
@@ -530,29 +699,33 @@ app.get("/removeTrack", async(req,res) => {
    // get email API
 
 app.get("/getEmail", async(req,res)=>{
-    const rec= await User.findById(req.query.id);
-    if(rec==null){
-        res.send('User not found!');
+    var email='';
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.status(403);
     }
-    else{
-        const email= await User.findById(req.query.id, 'email');
-        res.status(200).send(email);
-    }
-
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+        email=user.email;
+        if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)});
+    });
+    res.status(200).send(email);
 });
 
-function authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization']
-    const token = authHeader && authHeader.split(' ')[1]
-    if (token == null) return res.sendStatus(401)
-  
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-      console.log(err)
-      if (err) return res.sendStatus(403)
-      req.user = user
-      next()
-    })
-  }
+//    get ID API
+
+app.get("/getID", async(req,res)=>{
+    var id='';
+    const token= req.cookies.token;
+    if (token == null) {
+        return res.status(403);
+    }
+    jwt.verify(token, process.env.JWT_SECURITY_KEY, (err, user) => {
+        id=user.id;
+        if (err) return res.cookie('token', '', {path: '/', expires: new Date(Date.now() - 100000)});
+    });
+    res.status(200).send(id);
+});
+
 
 app.listen(PORT, () => {
     console.log(`--- 'Sortify' is live on port: ${PORT} ---`);

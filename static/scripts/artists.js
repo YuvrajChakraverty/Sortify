@@ -16,7 +16,7 @@ window.onload =async function(){
         for(let i=0; i<artistData.length; i++){
             var a = document.createElement('a');
             a.setAttribute('class','artist');
-            var artist_name=artistData[i].name.replace(" ","%20");
+            var artist_name=artistData[i].name.replaceAll(" ","%20");
             a.href= "/artist/" + artist_name;
             var image= document.createElement('img');
             image.setAttribute('class','pic');
@@ -26,5 +26,4 @@ window.onload =async function(){
             a.appendChild(name);
             artists.appendChild(a);
         }
-
 }
