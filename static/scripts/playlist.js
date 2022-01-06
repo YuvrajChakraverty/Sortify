@@ -13,8 +13,8 @@ const params= new URLSearchParams(window.location.search);
 const playlist_num= params.get('playlist');
 
 
-// const url= 'https://sortify-1.herokuapp.com/userTracks?list=pl'+playlist_num;
-const url= 'http://localhost/userTracks?list=pl'+playlist_num;
+const url= 'https://sortify-1.herokuapp.com/userTracks?list=pl'+playlist_num;
+// const url= 'http://localhost/userTracks?list=pl'+playlist_num;
 
 async function getData() {
 
@@ -285,8 +285,8 @@ function popup(option) {
 async function add() {
     const list='fav';
     var track=document.getElementById('selected_song').innerText.replaceAll(' ','+');
-    // const url_='https://sortify-1.herokuapp.com/addTrack?list='+list+'&track='+track;
-    const url_='http://localhost/addTrack?list='+list+'&track='+track;
+    const url_='https://sortify-1.herokuapp.com/addTrack?list='+list+'&track='+track;
+    // const url_='http://localhost/addTrack?list='+list+'&track='+track;
     var status= 0;
     await fetch(url_).then(response => response.text()).then(res => status=res);
     if(status==1){
@@ -307,8 +307,8 @@ async function add() {
 async function remove() {
     const list='pl'+playlist_num;
     var track=document.getElementById('selected_song').innerText.replaceAll(' ','+');
-    // const url_='https://sortify-1.herokuapp.com/removeTrack?list='+list+'&track='+track;
-    const url_='http://localhost/removeTrack?list='+list+'&track='+track;
+    const url_='https://sortify-1.herokuapp.com/removeTrack?list='+list+'&track='+track;
+    // const url_='http://localhost/removeTrack?list='+list+'&track='+track;
     var status= 0;
     await fetch(url_).then(response => response.text()).then(res => status=res);
     if(status==1){

@@ -32,13 +32,13 @@ window.onload= async function() {
     document.getElementById("artistimg").src=document.getElementById('pic_url').innerText;
     
     const artist__name=document.getElementById('artistname').innerText.replaceAll(' ','%20');
-    url= 'https://sortify-1.herokuapp.com/tracksdata/' + artist__name;
-    // url= 'http://localhost/tracksdata/' + artist__name;
+    // url= 'https://sortify-1.herokuapp.com/tracksdata/' + artist__name;
+    url= 'http://localhost/tracksdata/' + artist__name;
     
     await getData();
     
-    // const url_='https://sortify-1.herokuapp.com/favArtists';
-    const url_='http://localhost/favArtists';
+    const url_='https://sortify-1.herokuapp.com/favArtists';
+    // const url_='http://localhost/favArtists';
         
         await fetch(url_)
             .then(response => response.json())
@@ -212,8 +212,8 @@ async function favStatusChange(image) {
     const art=document.getElementById('artistname').innerText.replaceAll(' ','+');
     if(fav==0){
         act='add';
-        // const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act;
-        const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act;
+        const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act;
+        // const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act;
         var status=0;
         await fetch(_url).then(response => response.text()).then(res => status=res);
         if(status==1){
@@ -224,8 +224,8 @@ async function favStatusChange(image) {
 
     else if(fav==1){
         act='rem'
-        // const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act;
-        const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act;
+        const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act;
+        // const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act;
         var status=0;
         await fetch(_url).then(response => response.text()).then(res => status=res);
         if(status==1){
@@ -284,8 +284,8 @@ async function add(elm) {
         addedto='Favorites';
     }
     var track=document.getElementById('selected_song').innerText.replaceAll(' ','+');
-    // const url_='https://sortify-1.herokuapp.com/addTrack?list='+list+'&track='+track;
-    const url_='http://localhost/addTrack?list='+list+'&track='+track;
+    const url_='https://sortify-1.herokuapp.com/addTrack?list='+list+'&track='+track;
+    // const url_='http://localhost/addTrack?list='+list+'&track='+track;
     var status= 0;
     await fetch(url_).then(response => response.text()).then(res => status=res);
     if(status==1){

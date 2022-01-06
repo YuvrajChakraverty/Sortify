@@ -1,6 +1,6 @@
 window.onload =async function(){
-        const url='https://sortify-1.herokuapp.com/artistsdata';
-        // const url='http://localhost/artistsdata';
+        // const url='https://sortify-1.herokuapp.com/artistsdata';
+        const url='http://localhost/artistsdata';
         var artistData=[];
         
         await fetch(url)

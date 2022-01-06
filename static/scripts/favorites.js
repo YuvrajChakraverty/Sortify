@@ -4,8 +4,8 @@ var songs=localStorage.getItem('fav');
 
 window.onload= async function(){
     
-    // const url='https://sortify-1.herokuapp.com/favArtists';
-    const url='http://localhost/favArtists';
+    const url='https://sortify-1.herokuapp.com/favArtists';
+    // const url='http://localhost/favArtists';
         var artistData=[];
         
         await fetch(url)
