@@ -37,13 +37,8 @@ window.onload= async function() {
     
     await getData();
     
-<<<<<<< HEAD
-    const url_='https://sortify-1.herokuapp.com/favArtists?id='+localStorage.getItem('id');
-    // const url_='http://localhost/favArtists?id='+localStorage.getItem('id');
-=======
     // const url_='https://sortify-1.herokuapp.com/favArtists';
     const url_='http://localhost/favArtists';
->>>>>>> urlbranch
         
         await fetch(url_)
             .then(response => response.json())
@@ -217,12 +212,6 @@ async function favStatusChange(image) {
     const art=document.getElementById('artistname').innerText.replaceAll(' ','+');
     if(fav==0){
         act='add';
-<<<<<<< HEAD
-        const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
-        // const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
-        fetch(_url);
-        fav=1;
-=======
         // const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act;
         const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act;
         var status=0;
@@ -231,17 +220,10 @@ async function favStatusChange(image) {
           image.src="../static/imgs/icons/fav.png";
           fav=1;
         }
->>>>>>> urlbranch
     }
 
     else if(fav==1){
         act='rem'
-<<<<<<< HEAD
-        const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
-        // const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
-        fetch(_url);
-        fav=0;
-=======
         // const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act;
         const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act;
         var status=0;
@@ -250,7 +232,6 @@ async function favStatusChange(image) {
           image.src="../static/imgs/icons/notfav.png"
           fav=0;
         }
->>>>>>> urlbranch
     }
     else{
         console.log('Fav Status error');
@@ -303,13 +284,8 @@ async function add(elm) {
         addedto='Favorites';
     }
     var track=document.getElementById('selected_song').innerText.replaceAll(' ','+');
-<<<<<<< HEAD
-    const url_='https://sortify-1.herokuapp.com/addTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
-    // const url_='http://localhost/addTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
-=======
     // const url_='https://sortify-1.herokuapp.com/addTrack?list='+list+'&track='+track;
     const url_='http://localhost/addTrack?list='+list+'&track='+track;
->>>>>>> urlbranch
     var status= 0;
     await fetch(url_).then(response => response.text()).then(res => status=res);
     if(status==1){
