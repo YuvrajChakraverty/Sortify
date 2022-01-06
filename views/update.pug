@@ -28,8 +28,6 @@ block content
      .label
       |Name
      input#name.cred(type="text" placeholder='Name' value="" name='name' required maxlength='15' oninput="namechange()" onclick='btnchange()')
-     .msg 
-      |
 
     #passblock 
      .label
@@ -39,7 +37,6 @@ block content
      div#pw_msg.msg
       |(length between 8-20, spaces not allowed, must have at least 1 :<br>
       |uppercase; lowercase; digit(0-9); special character[ !, @, #, $, %, &, ? ])
-     input#id.hiddenF(type="text" name='id' value='')
      input#passChange.hiddenF(type="text" name='passChange' value='00000000')
    #options 
     a#cancel.option(href="/account") Cancel

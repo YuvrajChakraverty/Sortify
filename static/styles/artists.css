@@ -7,8 +7,8 @@ section{
     align-items: center;
     justify-content: center;
     height: 640px;
-    /* background: rgba(80, 163, 80, 0.82); */
-    background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%);
+    background: rgba(80, 163, 80, 0.82);
+    /* background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%); */
     font-family: 'Manrope', sans-serif;
 }
 
@@ -39,7 +39,7 @@ section{
 }
 
 .artist:hover{
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
     box-shadow: 1px 1px rgb(155, 155, 155);
 }
 

@@ -5,8 +5,8 @@
 #content{
     font-family: 'Manrope', sans-serif;
     height: 640px;
-    /* background: rgba(80, 163, 80, 0.82); */
-    background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%);
+    background: rgba(80, 163, 80, 0.82);
+    /* background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%); */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -81,6 +81,7 @@ hr{
     font-size: 15px;
     color: rgb(21, 153, 38);
     pointer-events: all;
+    font-style: italic;
 }
 
 #layout2Playlists{

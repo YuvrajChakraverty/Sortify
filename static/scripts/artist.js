@@ -37,8 +37,8 @@ window.onload= async function() {
     
     await getData();
     
-    // const url_='https://sortify-1.herokuapp.com/favArtists?id='+localStorage.getItem('id');
-    const url_='http://localhost/favArtists?id='+localStorage.getItem('id');
+    // const url_='https://sortify-1.herokuapp.com/favArtists';
+    const url_='http://localhost/favArtists';
         
         await fetch(url_)
             .then(response => response.json())
@@ -94,19 +94,17 @@ window.onload= async function() {
         //li>div1>left
         var left= document.createElement('div');
         left.setAttribute('class','left');
+        var track_num= document.createElement('div');
+        track_num.setAttribute('class','track_no');
         var track_no;
         var t=i+1;
-        if(i<9){
-            track_no=document.createTextNode('0'+t+'. ');
-        }
-        else{
-            track_no=document.createTextNode(t+'. ');
-        }
+        track_no=document.createTextNode(t+'.');
+        track_num.appendChild(track_no);
         var track_=document.createElement('div');
         track_.setAttribute('class','track_name');
         var track_name=document.createTextNode(tracksarray[i].name);
         track_.appendChild(track_name);
-        left.appendChild(track_no);
+        left.appendChild(track_num);
         left.appendChild(track_);
 
         //li>div1>right
@@ -152,9 +150,7 @@ function playthis(track) {
     const audiourl= document.getElementById("audiourl");
     const current_song= document.getElementById("current_song");
     const prev= document.getElementById(prev_track);
-    const left= track.getElementsByClassName("left")[0];
-    const song_name= left.innerText;
-    const song= song_name.slice(4);
+    const song= track.getElementsByClassName('track_name')[0].innerText;
     prev.classList.remove("track_playing");
     prev.classList.add("track_static");
     for(let i=0; i<tracksarray.length; i++) {
@@ -211,25 +207,31 @@ function prev() {
     playthis(current);
 }
 
-function favStatusChange(image) {
+async function favStatusChange(image) {
     var act=''
     const art=document.getElementById('artistname').innerText.replaceAll(' ','+');
     if(fav==0){
-        image.src="../static/imgs/icons/fav.png";
         act='add';
-        // const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
-        const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
-        fetch(_url);
-        fav=1;
+        // const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act;
+        const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act;
+        var status=0;
+        await fetch(_url).then(response => response.text()).then(res => status=res);
+        if(status==1){
+          image.src="../static/imgs/icons/fav.png";
+          fav=1;
+        }
     }
 
     else if(fav==1){
-        image.src="../static/imgs/icons/notfav.png";
         act='rem'
-        // const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
-        const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act+'&id='+localStorage.getItem('id');
-        fetch(_url);
-        fav=0;
+        // const _url= 'https://sortify-1.herokuapp.com/artFavStatusChange?art='+art+'&act='+act;
+        const _url= 'http://localhost/artFavStatusChange?art='+art+'&act='+act;
+        var status=0;
+        await fetch(_url).then(response => response.text()).then(res => status=res);
+        if(status==1){
+          image.src="../static/imgs/icons/notfav.png"
+          fav=0;
+        }
     }
     else{
         console.log('Fav Status error');
@@ -260,6 +262,7 @@ function createShuffleArray(l){
 }
 
 function popup(option) {
+    document.getElementById('succ_msg').style.display='none';
     const options= document.getElementById('options');
     const selected_song=document.getElementById('selected_song');
     var ID_= option.parentElement.parentElement.getElementsByClassName('track_info')[0].id;
@@ -275,16 +278,28 @@ function popup(option) {
 
 async function add(elm) {
     var list='pl'+elm.innerText.replace('Add to Playlist ','');
+    var addedto='Playlist'
     if(elm.innerText=='Add to Favorites'){
         list='fav';
+        addedto='Favorites';
     }
     var track=document.getElementById('selected_song').innerText.replaceAll(' ','+');
-    // const url_='https://sortify-1.herokuapp.com/addTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
-    const url_='http://localhost/addTrack?list='+list+'&track='+track+'&id='+localStorage.getItem('id');
+    // const url_='https://sortify-1.herokuapp.com/addTrack?list='+list+'&track='+track;
+    const url_='http://localhost/addTrack?list='+list+'&track='+track;
     var status= 0;
     await fetch(url_).then(response => response.text()).then(res => status=res);
     if(status==1){
         localStorage.setItem(list, parseInt(localStorage.getItem(list))+1);
+        const msg= document.getElementById('succ_msg');
+        msg.innerText='Added To '+addedto;
+        msg.style.display='block';
+        setTimeout(() => {msg.style.display='none'}, 2000);
+    }
+    else if(status==2){
+        const msg= document.getElementById('succ_msg');
+        msg.innerText='Already Present in '+addedto;
+        msg.style.display='block';
+        setTimeout(() => {msg.style.display='none'}, 2000);
     }
 }
 
@@ -292,5 +307,6 @@ function collapse(collapse){
     localStorage.setItem('taskbar',0);
     document.getElementById('player').style.height='110px';
     document.getElementById('options').style.bottom='120px';
+    document.getElementById('succ_msg').style.bottom='122px';
     collapse.style.display='none';
 }

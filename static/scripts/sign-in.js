@@ -1,3 +1,7 @@
+if(document.cookie!=''){
+  window.location.replace('/home');
+}
+
 window.onload= function() {
   const msg= document.getElementById("alert").innerHTML;
   const message= document.getElementById("message");

@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
 
 #content{
-    /* background: rgba(80, 163, 80, 0.82); */
-    background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%);
+    background: rgba(80, 163, 80, 0.82);
+    /* background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%); */
     height: 640px;
     font-family: 'Manrope', sans-serif;
     display: flex;
@@ -18,15 +18,16 @@
     justify-content: space-between;
     align-items: center;
     padding: 0px 20px;
-    /* background: rgb(140, 120, 170); */
-    background: rgba(190, 30, 255, 0.4);
+    background: rgb(140, 120, 170);
+    /* background: rgb(80, 170, 90); */
     height: 50px;
     box-sizing: border-box;
 }
 
 #greet{
     font-size: 30px;
-    text-shadow: 1px 1px green;
+    text-shadow: 2px 1px rgb(80, 170, 90);
+    /* text-shadow: 2px 1px rgb(140, 120, 170); */
 }
 
 #logout{
@@ -77,7 +78,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-shadow: 1px 1px green;
+    text-shadow: 1px 1px rgb(140, 120, 170);
+    visibility: hidden;
 }
 
 #date{

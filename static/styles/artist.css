@@ -7,8 +7,8 @@ section{
     flex-direction: column;
     min-height: 640px;
     height: auto;
-    /* background: rgba(80, 163, 80, 0.82); */
-    background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%);
+    background: rgba(80, 163, 80, 0.82);
+    /* background-image: linear-gradient(rgba(80, 163, 80, 0.82) 0%, rgb(140, 120, 170) 110%); */
     font-family: 'Manrope', sans-serif;
 }
 
@@ -132,6 +132,10 @@ hr{
     width: 80%;
 }
 
+.track_no{
+    width: 30px;
+}
+
 .track_name{
     display: flex;
     flex-direction: row;
@@ -205,6 +209,21 @@ hr{
 
 .op:hover{
     background-color: rgb(201, 201, 201);
+}
+
+/* success message */
+
+#succ_msg{
+    z-index: 1;
+    position: fixed;
+    bottom: 170px;
+    border-radius: 10px;
+    color: white;
+    background: rgb(40, 153, 197);
+    box-sizing: border-box;
+    padding: 15px 20px;
+    text-align: center;
+    display: none;
 }
 
 /* audio player controls */

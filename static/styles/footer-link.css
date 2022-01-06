@@ -18,7 +18,7 @@ body{
 
 body::before{
     content: "";
-    background-image: url(../static/imgs/backgrounds/b2.jpg);
+    background-image: url(../static/imgs/backgrounds/footer-bg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -61,11 +61,6 @@ body::before{
     font-size: 12px;
 }
 
-#from{
-    display: flex;
-    flex-direction: column;
-}
-
 #feedback_text{
     margin-top: 15px;
     padding: 5px;
@@ -85,10 +80,6 @@ body::before{
 
 #formmsg{
     font-size: 10px;
-}
-
-.hiddenField{
-    display: none;
 }
 
 #submit{
