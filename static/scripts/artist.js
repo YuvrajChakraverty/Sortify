@@ -32,8 +32,8 @@ window.onload= async function() {
     document.getElementById("artistimg").src=document.getElementById('pic_url').innerText;
     
     const artist__name=document.getElementById('artistname').innerText.replaceAll(' ','%20');
-    // url= 'https://sortify-1.herokuapp.com/tracksdata/' + artist__name;
-    url= 'http://localhost/tracksdata/' + artist__name;
+    url= 'https://sortify-1.herokuapp.com/tracksdata/' + artist__name;
+    // url= 'http://localhost/tracksdata/' + artist__name;
     
     await getData();
     
