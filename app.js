@@ -100,7 +100,7 @@ app.post("/", async(req, res) => {
                      nP3: rec.pl3.length
                     }
                 const accessToken = jwt.sign(user_data, process.env.JWT_SECURITY_KEY, { expiresIn: '604800s' });
-                res.status(200).cookie('token', accessToken, {path: '/', expires: new Date(Date.now() + 604799990), httpOnly: true, secure: true}).render("signinsuccess", data);
+                res.status(200).cookie('token', accessToken, {path: '/', expires: new Date(Date.now() + 604799990), secure: true}).render("signinsuccess", data);
 
             }
 
