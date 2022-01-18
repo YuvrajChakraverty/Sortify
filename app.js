@@ -93,7 +93,6 @@ app.post("/", async(req, res) => {
                  }
                  const data = {
                      name: rec.name,
-                     favArtists: rec.arts,
                      nFav: rec.fav.length,
                      nP1: rec.pl1.length,
                      nP2: rec.pl2.length,
